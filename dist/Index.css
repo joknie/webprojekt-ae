@@ -1,0 +1,255 @@
+:root {
+    --bg: rgb(32 32 32);
+    --fg: papayawhip;
+    --highlight: aquamarine;
+    --table-inner: grey;
+    --serifs: Georgia, 'Times New Roman', Times, serif;
+    --sans: 'Trebuchet MS', Trebuchet, 'Lucida Sans', Arial, sans-serif;
+    --monospace: 'Consolas', 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p,
+ol,
+table {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--serifs);
+    font-size: 2.5vmin;
+    line-height: 1.5;
+}
+
+p,
+ol {
+    width: 90%;
+}
+
+.invert {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--highlight);
+    color: var(--bg);
+    text-align: center;
+    font-weight: bold;
+    padding-top: 1vmin;
+    padding-bottom: 1vmin;
+    border-radius: 2vmin;
+    font-family: var(--sans);
+}
+
+.a-invert {
+    color: darkslateblue;
+    text-decoration: none;
+    padding: 2vmin;    
+    border-right: 1vmin solid var(--bg);
+    padding-right: 3vmin;
+}
+
+.leftmost {
+    border-left: 1vmin solid var(--bg);
+}
+
+.a-invert:hover {
+    color: var(--highlight);
+    background-color: var(--bg);
+}
+
+.curr-page {
+    color: var(--highlight);
+    background-color: var(--bg);
+    padding: 2vmin;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.name {
+    font-style: italic;
+}
+
+.code {
+    font-family: var(--monospace);
+}
+
+.caption {
+    font-style: italic;
+    text-align: center;
+}
+
+.two {
+    font-size: 4vmin;
+    color: plum;
+    font-family: var(--monospace);
+}
+
+.three {
+    font-size: 6vmin;
+    color: palegreen;
+    font-family: var(--sans);
+}
+
+.narrow {
+    width: fit-content;
+}
+
+a {
+    color: var(--highlight);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: gold;
+    text-decoration: underline overline;
+}
+
+img {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2vmin;
+    border-style: solid;
+    border-width: 1vmin;
+    border-color: var(--highlight);
+}
+
+.pad-the-dog {
+    padding: 5vmin;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: var(--highlight);
+    font-family: var(--sans);
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+h3,
+h4,
+h5 {
+    margin-top: 3vmin;
+    margin-bottom: 2vmin;
+}
+
+h4,
+h5 {
+    margin-left: 5%;
+}
+
+h1 {
+    font-size: 8vmin;
+    margin-bottom: 0vmin;
+}
+
+h2 {
+    font-size: 3vmin;
+}
+
+h3 {
+    font-size: 5vmin;
+}
+
+h4 {
+    font-size: 4vmin;
+}
+
+h5 {
+    font-size: 2.7vmin;
+}
+
+table {
+    border: 1vmin solid var(--highlight);
+    border-collapse: separate;
+    border-radius: 2vmin;
+    border-spacing: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,
+td {
+    padding-left: 2vmin;
+    padding-right: 2vmin;
+    text-align: center;
+    vertical-align: center;
+    border-right: 0.3vmin solid var(--table-inner);
+    border-bottom: 0.3vmin solid var(--table-inner);
+}
+
+th:first-child,
+td:first-child {
+    border-left: none;
+}
+
+.last-in-row {
+    border-right: none;
+}
+
+.last-in-col {
+    border-bottom: none;
+}
+
+.unterricht {
+    background-color: saddlebrown;
+}
+
+.praxis {
+    background-color: rebeccapurple;
+}
+
+.frei {
+    background-color: darkgreen;
+}
+
+pre {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    color: sandybrown;
+    font-family: var(--monospace);
+    font-size: 2.5vmin;
+    padding: 2vmin;
+    border-style: solid;
+    border-width: 1vmin;
+    border-color: var(--highlight);
+    border-radius: 2vmin;
+}
+
+.flex-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div:first-child {
+    margin-right: 3vmin;
+}
+
+div:last-child {
+    margin-left: 3vmin;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+}

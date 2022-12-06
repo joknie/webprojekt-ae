@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Webprojekt Johannes Knieling (FIAE14)</title>
+    <link rel="stylesheet" href="Index.css" />
+  </head>
+  <body>
+    <h1 class="invert">Webprojekt</h1>
+    <h2>Johannes Knieling, FIAE14</h2>
+
+    <p class="invert sans">
+      &#9632; 
+      <a href="index.html" class="a-invert">&Uuml;bersicht</a> 
+      &#9632; 
+      <a href="PAP.html" class="a-invert">Programmablaufplan</a>
+      &#9632; 
+      <a href="Inhalt.html" class="a-invert">HTML Template Engine PUG</a> 
+      &#9632;
+    </p>
+
+    <h3>Die Pug-Template f&uuml;r Inhalt.html</h2>
+
+    <p>
+      Auf dieser Seite finden Sie den Quelltext der in Pug geschriebenen 
+      Template, aus der die im Projekt verwendete Datei 
+      &#8222;Inhalt.html&#8220; erzeugt wurde. Sie k&ouml;nnen sich auch 
+      <a href="Inhalt.pug">die Pug-Datei selbst</a> ansehen.
+    </p>
+
+    <pre>
+doctype html
+html(lang="en")
+  head 
+    meta(charset="UTF-8")
+    title Webprojekt Johannes Knieling (FIAE14)
+    link(rel="stylesheet" href="Index.css")
+
+  body
+
+    h1.invert Webprojekt
+    h2 Johannes Knieling, FIAE 14
+
+    p.invert.sans.
+      &amp;#9632; 
+      #[a(href='Index.html') &amp;Uuml;bersicht]
+      &amp;#9632;
+      #[a(href='PAP.html') Programmablaufplan]
+      &amp;#9632;
+      HTML Template Engine PUG 
+      &amp;#9632;
+
+    p.
+      #[strong Hinweis:] Auf dieser Seite befinden sich mehrere Links, die auf 
+      externe Seiten verweisen. Diese sind mit dem Symbol &amp;#8618; 
+      gekennzeichnet. F&amp;uuml;r die verlinkten Seiten und deren Inhalte kann 
+      keine Verantwortung &amp;uuml;bernommen werden.
+
+    h3 PUG als HTML-Pr&amp;auml;prozessor
+
+    p.
+      Die Arbeit mit HTML erfordert in der Regel viel Tippen und viele 
+      Sonderzeichen, um die HTML-Tags einzugeben. Es gibt viele Ans&amp;auml;tze,
+      diese Arbeit zu vereinfachen und den Code lesbarer zu machen.
+    
+    div.center
+      img.pad-the-dog(src='img/pug.png')
+    p.caption.
+      Abbildung 1 - Das Logo von Pug <br />
+      Quelle: 
+      #[a(href="https://github.com/pugjs/pug-logo/blob/master/PNG/pug-final-logo_-colour-128.png") &amp;#8618; pug-logo Github-Repository von pugjs]
+
+    p. 
+      Die 
+      #[a(href="https://github.com/pugjs/pug" target="_blank") &amp;#8618; Template Engine #[em Pug]]
+      bietet eine vereinfachte Markupsprache, die automatisch in HTML 
+      umgewandelt werden kann.
+
+    p. 
+      Dar&amp;uuml;ber hinaus bietet sie Funktionen, die in HTML nicht oder nur 
+      unter Einbindung von JavaScript zu realisieren sind. Dazu geh&amp;ouml;ren
+      Variablen, Verzweigungen und Iterationen.
+
+    p.
+      Sie bietet weiterhin M&amp;ouml;glichkeiten, Code aus anderen Dateien
+      einzubinden. Dadurch soll das DRY-Prinzip (&amp;#8222;Don&amp;acute;t Repeat
+      Yourself&amp;#8220;) auch in HTML anwendbar gemacht werden.
+
+    h4 Format des Pug-Markups
+
+    p. 
+      Pug vereinfacht das Markup von HTML durch den Verzicht auf die spitzen 
+      Klammern und schlie&amp;szlig;ende Tags. Attribute werden Tags in einfachen 
+      Klammern hinzugef&amp;uuml;gt und Klassen k&amp;ouml;nnen in einer Punktnotation
+      angef&amp;uuml;gt werden.
+
+    p So sieht der Anfang dieser Seite in Pug folgenderma&amp;szlig;en aus:
+
+    pre.
+      h1.invert Webprojekt
+      h2 Johannes Knieling, FIAE 14
+
+      p.invert.
+        &amp;amp;#9632;
+        \#[a(href='Index.html') &amp;Uuml;bersicht]
+        &amp;amp;#9632;
+        \#[a(href='PAP.html') Programmablaufplan]
+        &amp;amp;#9632;
+        HTML Template Engine PUG 
+        &amp;amp;#9632;
+    
+    p.caption Codeausschnitt 1 - Ein Beispiel f&amp;uuml;r Formatierung in Pug
+
+    p.
+      Die ersten beiden Zeilen sind &amp;Uuml;berschriften, wobei die erste mit
+      der Klasse &amp;#8222;invert&amp;#8220; formatiert wird. Der p-Tag wird 
+      ebenfalls mit dieser formatiert und stellt die Navigationsleiste dar.
+      Besondere Beachtung verdient hier der abschlie&amp;szlig;ende Punkt nach
+      der Klasse. Dieser zeigt Pug an, dass ein mehrzeiliger Textblock folgt.
+
+    p.
+      Die Zeilen, die den Inhalt des Tags darstellen, sind einger&amp;uuml;ckt,
+      da Pug Einr&amp;uuml;ckung zur Hierarchisierung verwendet, &amp;auml;hnlich
+      der Programmiersprache Python oder der Pug verwandten Markupsprache
+      YAML. 
+
+    p.
+      Innerhalb eines anderen Tags müssen HTML-Tags mit den 
+      Zeichen \#[...] umschlossen werden, da sie sonst als Text interpretiert 
+      werden. Die Raute gibt an, dass Pug beim Umwandeln in HTML stattdessen
+      den Ausdruck in den eckigen Klammern als Code interpolieren soll.
+
+    h4 Variablen, Iteration und Verzweigungen 
+
+    p. 
+      Eine interessante Funktionalit&amp;auml;tserweiterung gegen&amp;uuml;ber HTML
+      ist die M&amp;ouml;glichkeit, Programmierfunktionen wie Variablen,
+      Verzweigungen und Iterationen direkt in der pug-Datei zu verwenden.
+
+    p Ein Beispiel f&amp;uuml;r den Einsatz dieser Funktionen :
+
+    - var i = 1
+    - var list = ["Alice", "Bob", "Charlie", "Dave", "Eve", "Frank"]    
+
+    table
+      each item in list
+        tr          
+          if i==list.length
+            td.last-in-col=i++
+            td.last-in-row.last-in-col=item
+          else
+            td=i++
+            td.last-in-row=item
+
+    p.caption Tabelle 1 - Ein Beispiel f&amp;uuml;r eine aus Daten erzeugte Tabelle
+
+    p.
+      An dieser Tabelle ist zun&amp;auml; nichts ungew&amp;ouml;hnliches zu erkennen. 
+      Auch ein Blick in den Seitenquelltext zeigt nur eine herk&amp;ouml;mmliche 
+      HTML-Tabelle. In der Pug-Template sieht diese Tabelle allerdings so
+      aus:
+
+    pre.
+      - var i = 1
+      - var list = ["Alice", "Bob", "Charlie", "Dave", "Eve", "Frank"]
+      
+      table
+        each item in list
+          tr
+            if i==list.length
+              td.last-in-col=i++
+              td.last-in-row.last-in-col=item
+            else
+              td=i++
+              td.last-in-row=item
+
+    p.caption Codeausschnitt 2 - Erzeugen einer Tabelle aus Daten 
+        
+    p.
+      Statt einer statischen Definition der Tabelle werden in diesem Code aus
+      dem Array &amp;#8222;list&amp;#8220; (unter Zuhilfenahme einer 
+      Z&amp;auml;hlvariable &amp;#8222;i&amp;#8220;) die Tabellenzeilen generiert. Dies
+      erlaubt das einfache Entfernen oder Hinzuf&amp;uuml;gen von Eintr&amp;auml;gen.
+      
+    p.
+      Auch eine Verzweigung ist hier zu sehen. Die letzte Zeile der Tabelle muss
+      aufgrund der CSS-Definitionen als solche ausgezeichnet werden. Dies wird
+      durch einen Vergleich der Z&amp;auml;hlvariablen mit der L&amp;auml;nge des
+      Arrays erreicht.
+
+    h4 Weitere Funktionen
+
+    p.
+      Weitere Funktionen, die Pug bereitstellt, die aber im Rahmen dieses
+      Projekts nicht eingesetzt wurden, sollen trotzdem kurz angeschnitten
+      werden.
+
+    h5 Includes
+
+    p. 
+      Mit dem Befehl &amp;#8222;include&amp;#8220; kann in eine pug-Datei der Inhalt
+      einer anderen Pug-Datei eingbunden werden. Dieser wird an der jeweiligen
+      Stelle einge&amp;uuml;gt. Dadurch k&amp;ouml;nnen Seitenbausteine gem&amp;auml;&amp;szlig;
+      dem DRY-Prinzip wiederverwendet werden.
+
+    p. 
+      W&amp;auml;ren die anderen Seiten dieses Projekt ebenfalls aus einer
+      Pug-Vorlage erzeugt worden, w&amp;auml;re es z.B. sinnvoll gewesen, den
+      Seitenkopf und die Fu&amp;szlig;zeile jeweils als Include zu realisieren.
+
+    h5 Mixins
+
+    p. 
+      Ein wiederverwendbarer Code-Block innerhalb einer Datei wird Mixin
+      genannt. Dieser wird einmal definiert und kann dann beliebig oft
+      wiederverwendet werden.
+
+    div.flex-container
+      div
+        p PUG Template:
+        pre.
+          //- Declaration
+          mixin list
+          ul
+            li foo
+            li bar
+            li baz
+          //- Use
+          +list
+          +list            
+      div
+        p Erzeugtes HTML:
+        pre.
+          &amp;lt;ul&amp;gt;
+            &amp;lt;li&amp;gt;foo&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;bar&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;baz&amp;lt;/li&amp;gt;
+          &amp;lt;/ul&amp;gt;
+          &amp;lt;ul&amp;gt;
+            &amp;lt;li&amp;gt;foo&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;bar&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;baz&amp;lt;/li&amp;gt;
+          &amp;lt;/ul&amp;gt;
+
+    p.caption.
+      Codebeispiel 3 - Mixin zum Erzeugen einer Liste<br />
+      Quelle: 
+      #[a(href="https://pugjs.org/language/mixins.html") &amp;#8618; Pug Dokumentation: Mixins]
+
+    p. 
+      Durch den zweifachen Aufruf von &amp;#8222;+list&amp;#8220; am Ende des 
+      Pug-Ausschnitts werden bei der Konversion zu HTML zwei Listen erzeugt.
+
+    h5 Vererbung
+
+    p. 
+      Templates k&amp;ouml;nnen in Pug andere Templates erweitern und deren Inhalt
+      erben. In einer vererbenden Template k&amp;ouml;nnen Bl&amp;ouml;cke definiert 
+      werden, die entweder mit einen Standardinhalt gef&amp;uuml;llt oder in der 
+      Kindtemplate definiert und ersetzt werden k&amp;ouml;nnen.
+
+    h5 Filter
+
+    p. 
+      Eine komplexere Funktion sind Filter, mit denen Code in anderen
+      Programmiersprachen in eine Pug-Template eingef&amp;uuml;gt werden kann.
+      Dabei ist zu beachten, das dieser Code dann beim Kompilieren der 
+      Template in eine HTML-Datei interpretiert wird. Deshalb kann mit
+      ihnen kein dynamischer Inhalt erzeugt werden.
+
+    h4 Umwandlung von Pug in HTML
+
+    p. 
+      Um eine in Pug geschriebene Template in eine HTML-Datei, die ein
+      Browser anzeigen kann, umzuwandeln, gibt es mehrere M&amp;ouml;glichkeiten.
+
+    ol
+      li.
+        Da Pug auf Node.js basiert, kann es, wenn Node.js auf dem System
+        installiert ist, &amp;uuml;ber entsprechende Aufrufe des Node Package
+        Managers npm umgewandelt werden.
+      li
+        | Eine Option, die zum Experimentieren einl&amp;auml;dt, sind 
+        | Online-Konverter, die oft auch eine Umwandlung in Echtzeit 
+        | bereitstellen. Beispiele:
+        ul
+          li #[a(href="https://pug2html.com/" target="_blank") &amp;#8618; Pug2HTML] 
+          li #[a(href="https://pughtml.com/" target="_blank") &amp;#8618; Pug-HTML] 
+          li #[a(href="https://www.cssportal.com/pug-to-html/" target="_blank") &amp;#8618; Konverter bei {CSS}Portal]
+      li. 
+        Plugins in einer IDE k&amp;ouml;nnen ebenfalls Konvertierungen
+        durchf&amp;uuml;hren. F&amp;uuml;r dieses Projekt wurde das Plugin 
+        #[a(href="https://marketplace.visualstudio.com/items?itemName=Wscats.eno" target="_blank") &amp;#8618; Compile Hero Pro]
+        f&amp;uuml;r Visual Studio Code verwendet.
+
+    h4 Fazit  
+        
+    p.
+      Die Arbeit mit Pug vereinfacht das Erstellen von Webseiten. Der
+      Wegfall der HTML-typischen spitzen Klammern und der schlie&amp;szlig;enden
+      Tags erh&amp;ouml;ht die Arbeitsgeschwindigkeit. Die Strukturierung durch
+      Einr&amp;uuml;ckungen erzwingt eine konsequent ordentliche Formatierung.
+      Beides zusammen erh&amp;ouml;ht die Lesbarkeit des Quelltexts gegen&amp;uuml;ber 
+      HTML.
+
+    p.
+      In diesem Projekt wurden die M&amp;ouml;glichkeiten, die sich durch die
+      zusa&amp;auml;tzlichen Funktionen, die Pug bietet, bestenfalls angedeutet.
+      Neben der M&amp;ouml;glichkeit, eine Website unter Ber&amp;uuml;cksichtigung
+      des DRY-Prinzips aufzubauen, er&amp;ouml;ffnet die Arbeit mit Daten einen
+      sehr gro&amp;szlig;en Spielraum, von dem das oben gezeight Beispiel des 
+      Generierens einer Tabelle nur ein winziger Teil ist.
+
+    p.
+      Zum Abschluss noch ein Link zur 
+      #[a(href="../Pug.html") Pug-Datei, aus der diese Seite erstellt wurde.] 
+      Vergleichen Sie diese doch einmal mit dem HTML-Quelltext dieser Seite
+      oder fügen Sie sie in einen der oben verlinkten Konverter ein!
+          
+    p.invert &amp;copy; 2022 Johannes Knieling    
+    
+    
+    </pre>
+    
+    
+    <p class="invert">&copy; 2022 Johannes Knieling</p>
+  </body>
+</html>
