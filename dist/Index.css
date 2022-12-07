@@ -4,8 +4,8 @@
     --highlight: aquamarine;
     --table-inner: grey;
     --serifs: Georgia, 'Times New Roman', Times, serif;
-    --sans: 'Trebuchet MS', Trebuchet, 'Lucida Sans', Arial, sans-serif;
-    --monospace: 'Consolas', 'Courier New', Courier, monospace;
+    --sans: 'Trebuchet MS', 'Noto Sans', 'Droid Sans', Tahoma, Arial, sans-serif;
+    --monospace: 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', Courier, monospace;
 }
 
 body {
@@ -43,29 +43,27 @@ ol {
     padding-bottom: 1vmin;
     border-radius: 2vmin;
     font-family: var(--sans);
+    overflow: hidden;
 }
 
-.a-invert {
-    color: darkslateblue;
-    text-decoration: none;
-    padding: 2vmin;    
-    border-right: 1vmin solid var(--bg);
-    padding-right: 3vmin;
-}
-
-.leftmost {
-    border-left: 1vmin solid var(--bg);
-}
-
-.a-invert:hover {
-    color: var(--highlight);
-    background-color: var(--bg);
-}
-
-.curr-page {
-    color: var(--highlight);
-    background-color: var(--bg);
+.invert a {
+    float: inherit;
+    color: var(--bg);
+    text-align: center;
     padding: 2vmin;
+    text-decoration: none;
+    margin: -0.4vmin;
+}
+
+.invert a:hover {
+    background-color: var(--fg);
+    color: var(--bg);
+    text-decoration: none;
+}
+
+.invert a.active {
+    color: var(--fg);
+    background-color: var(--bg);
 }
 
 .bold {
@@ -107,8 +105,9 @@ a {
 }
 
 a:hover {
-    color: gold;
-    text-decoration: underline overline;
+    color: var(--bg);
+    background-color: var(--fg);
+    text-decoration: none;
 }
 
 img {
@@ -122,7 +121,7 @@ img {
 }
 
 .pad-the-dog {
-    padding: 5vmin;
+    padding: 2vmin;
 }
 
 h1,
@@ -224,7 +223,7 @@ pre {
     background-color: black;
     color: sandybrown;
     font-family: var(--monospace);
-    font-size: 2.5vmin;
+    font-size: 2vmin;
     padding: 2vmin;
     border-style: solid;
     border-width: 1vmin;
