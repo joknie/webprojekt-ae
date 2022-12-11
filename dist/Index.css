@@ -32,8 +32,7 @@ ol {
     width: 90%;
 }
 
-.invert,
-nav {
+.invert {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -48,7 +47,6 @@ nav {
     overflow: hidden;
 }
 
-nav a,
 .invert a {
     float: inherit;
     color: var(--bg);
@@ -59,7 +57,6 @@ nav a,
     margin: -0.4vmin;
 }
 
-nav a:hover,
 .invert a:hover {
     background-color: var(--fg);
     color: var(--bg);
@@ -67,7 +64,6 @@ nav a:hover,
     transition: 0.4s;
 }
 
-nav a.active,
 .invert a.active {
     color: var(--fg);
     background-color: var(--bg);

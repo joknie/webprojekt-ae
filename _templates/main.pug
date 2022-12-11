@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+  head 
+    meta(charset="UTF-8")
+    title Webprojekt Johannes Knieling (FIAE14)
+    link(rel="stylesheet" href="Index.css")
+
+  body
+
+    header
+      block header 
+        include ../_includes/Header.pug
+        
+    nav  
+      block navbar
+        include ../_includes/Nav.pug
+
+    main
+      block content
+        p You should never see this!
+    
+    footer
+      block footer
+        include ../_includes/Footer.pug
