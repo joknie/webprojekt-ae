@@ -31,7 +31,7 @@
       <p>Die Haupttemplate <span class="code">main.pug</span> stellt f&uuml;r die Seite das
         HTML-Ger&uuml;st bereit. Sie benutzt sowohl <span class="code">include</span>, um andere
         Dateien als Teil von sich selbst einzubinden, als auch einen
-        <span class="code">block</span>, der von vererbenden Dateien zu bef&uuml;llen ist.
+        <span class="code">block</span>, der von erbenden Dateien zu bef&uuml;llen ist.
         
       </p>
       <pre>doctype html
@@ -75,8 +75,8 @@ html(lang="en")
         <span class="code">main</span> wird ein <span class="code">block</span> definiert, der von Dateien,
         die diese Template verwenden (erben), gef&uuml;llt werden sollte. Tun sie 
         dies nicht, wird stattdessen der hier angegebene Defaultblock verwendet.
-        Der Text im <span class="code">p</span>-Tag dient hier gewisserma&szlig;en als
-        Fehlermeldung.
+        Der Text im <span class="code">p</span>-Tag dient in diesem Projekt gewisserma&szlig;en 
+        als Fehlermeldung.
         
       </p>
       <h4>Die Includes </h4>
@@ -251,7 +251,11 @@ li
         
       </p>
       <h4>&Uuml;brigens&hellip;</h4>
-      <p>&hellip;wurde auch diese Seite mit <span class="name">Pug</span> erstellt. </p>
+      <p>&hellip;wurde auch diese Seite mit <span class="name">Pug</span> erstellt. Auf eine 
+        Vorstellung des Codes f&uuml;r diese Seite wurde aber verzichtet, um das 
+        Abgleiten in eine endlose Rekursion von Seiten, welche die vorangegangene 
+        Seite erl&auml;utern, von Anfang an zu verhindern. &#128521;
+      </p>
     </main>
     <footer>
       <p class="invert">&copy; 2022 Johannes Knieling</p>

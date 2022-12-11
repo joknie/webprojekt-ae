@@ -32,8 +32,8 @@ block content
     #[a(href="https://github.com/pugjs/pug" target="_blank") &#8618;Template Engine #[span.name Pug]]
     bietet eine vereinfachte Markupsprache, die in HTML umgewandelt werden 
     kann. Dazu verwendet sie die JavaScript-Laufzeitumgebung 
-    #[span.name Node.js], mit der ein:e Benutzer:in aber nicht 
-    notwendigerweise interagieren muss.
+    #[span.name Node.js], mit der ein:e Benutzer:in bei der Benutzung von
+    #[span.name Pug] aber nicht notwendigerweise interagieren muss.
 
   p. 
     Neben dem vereinfachten Markup bietet #[span.name Pug] Funktionen, die 
@@ -115,13 +115,14 @@ block content
 
   p. 
     Mit dem Mittel der Interpolation k&ouml;nnen auch zuvor definierte 
-    Variablen in Texte eingef&uuml;gt werden. In der Beschriftung wird dies
-    verwendet, um die Nummerierung des Bildes festzulegen. Am Beginn des 
-    Dokuments (nicht Teil des Codeausschnitts) wurde #[span.code images] mit
-    dem Wert #[span.code 1] initialisiert. Hier wird dieser Wert 
-    eingef&uuml;gt und postinkrementiert, so dass bei der n&auml;chsten
-    Verwendung oder beim Einf&uuml;gen eines Bildes (mit entsprechender
-    Verwendung der Variablen in der Beschriftung) jeweils korrekt 
+    Variablen in Texte eingef&uuml;gt werden. Dazu wird das sehr &auml;hnliche
+    Konstrukt #[span.code \#{&lt;Variablenname&gt;}] verwendent. In der 
+    Beschriftung des Bildes wird damit die Nummerierung des Bildes realisiert. 
+    Am Beginn des Dokuments (nicht Teil des Codeausschnitts) wurde 
+    #[span.code images] mit dem Wert #[span.code 1] initialisiert. Hier wird 
+    dieser Wert eingef&uuml;gt und postinkrementiert, so dass bei der 
+    n&auml;chsten Verwendung oder beim Einf&uuml;gen eines Bildes (mit 
+    entsprechender Verwendung der Variablen in der Beschriftung) jeweils korrekt 
     gez&auml;hlt w&uuml;rde. Diese Funktion wurde auch f&uuml;r die 
     Codeausschnitte auf dieser Seite verwendet, wo sie mehr als nur 
     Beispielcharakter hat, da mehrere davon verwendet wurden.
@@ -187,8 +188,8 @@ block content
   p. 
     Dies macht insbesondere f&uuml;r immer wiederkehrende Teile des 
     Seitendesigns Sinn. So wurden der Kopfteil, die Navigationsleiste und die 
-    Fu&szlig;zeile als #[span.code include] bereits in de Template
-    #[span.code main.pug] realisiert.
+    Fu&szlig;zeile jeweils als #[span.code include] in einer seperaten Datei
+    realisiert und in die Template #[span.code main.pug] eingebunden.
 
   pre.
     header
@@ -354,6 +355,15 @@ block content
     werden kann. Dabei ist zu beachten, das dieser Code dann beim 
     Kompilieren der Template in eine HTML-Datei interpretiert wird. Deshalb 
     kann mit ihnen allein kein dynamischer Inhalt erzeugt werden.
+
+  h5 Zugriff auf externe Daten
+
+  p.
+    Mittels Filtern oder Inline-Code ist es auch m&ouml;glich auf Daten in
+    seperaten Dateien oder eine Datenbank zuzugreifen. Diese k&ouml;nnen dann
+    verwendet werden, um Inhalte zu erstellen. Das oben gezeigte Beispiel einer 
+    Tabelle w&auml;re bei gr&ouml;&szlig;erer Datenmenge ein Kandidat f&uuml;r 
+    die Umsetzung mit externen Daten.
 
   h4 Umwandlung von Pug in HTML
 

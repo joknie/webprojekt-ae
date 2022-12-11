@@ -24,7 +24,7 @@ block content
     Die Haupttemplate #[span.code main.pug] stellt f&uuml;r die Seite das
     HTML-Ger&uuml;st bereit. Sie benutzt sowohl #[span.code include], um andere
     Dateien als Teil von sich selbst einzubinden, als auch einen
-    #[span.code block], der von vererbenden Dateien zu bef&uuml;llen ist.
+    #[span.code block], der von erbenden Dateien zu bef&uuml;llen ist.
 
   pre.
     doctype html
@@ -69,8 +69,8 @@ block content
     #[span.code main] wird ein #[span.code block] definiert, der von Dateien,
     die diese Template verwenden (erben), gef&uuml;llt werden sollte. Tun sie 
     dies nicht, wird stattdessen der hier angegebene Defaultblock verwendet.
-    Der Text im #[span.code p]-Tag dient hier gewisserma&szlig;en als
-    Fehlermeldung.
+    Der Text im #[span.code p]-Tag dient in diesem Projekt gewisserma&szlig;en 
+    als Fehlermeldung.
 
   h4 Die Includes 
 
@@ -246,4 +246,7 @@ block content
   h4 &Uuml;brigens&hellip;
 
   p.
-    &hellip;wurde auch diese Seite mit #[span.name Pug] erstellt. 
+    &hellip;wurde auch diese Seite mit #[span.name Pug] erstellt. Auf eine 
+    Vorstellung des Codes f&uuml;r diese Seite wurde aber verzichtet, um das 
+    Abgleiten in eine endlose Rekursion von Seiten, welche die vorangegangene 
+    Seite erl&auml;utern, von Anfang an zu verhindern. &#128521;

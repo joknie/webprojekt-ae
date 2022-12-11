@@ -39,8 +39,8 @@
         <a href="https://github.com/pugjs/pug" target="_blank">&#8618;Template Engine <span class="name">Pug</span></a>
         bietet eine vereinfachte Markupsprache, die in HTML umgewandelt werden 
         kann. Dazu verwendet sie die JavaScript-Laufzeitumgebung 
-        <span class="name">Node.js</span>, mit der ein:e Benutzer:in aber nicht 
-        notwendigerweise interagieren muss.
+        <span class="name">Node.js</span>, mit der ein:e Benutzer:in bei der Benutzung von
+        <span class="name">Pug</span> aber nicht notwendigerweise interagieren muss.
         
       </p>
       <p>Neben dem vereinfachten Markup bietet <span class="name">Pug</span> Funktionen, die 
@@ -122,13 +122,14 @@ p.caption.
       </p>
       <p>
         Mit dem Mittel der Interpolation k&ouml;nnen auch zuvor definierte 
-        Variablen in Texte eingef&uuml;gt werden. In der Beschriftung wird dies
-        verwendet, um die Nummerierung des Bildes festzulegen. Am Beginn des 
-        Dokuments (nicht Teil des Codeausschnitts) wurde <span class="code">images</span> mit
-        dem Wert <span class="code">1</span> initialisiert. Hier wird dieser Wert 
-        eingef&uuml;gt und postinkrementiert, so dass bei der n&auml;chsten
-        Verwendung oder beim Einf&uuml;gen eines Bildes (mit entsprechender
-        Verwendung der Variablen in der Beschriftung) jeweils korrekt 
+        Variablen in Texte eingef&uuml;gt werden. Dazu wird das sehr &auml;hnliche
+        Konstrukt <span class="code">#{&lt;Variablenname&gt;}</span> verwendent. In der 
+        Beschriftung des Bildes wird damit die Nummerierung des Bildes realisiert. 
+        Am Beginn des Dokuments (nicht Teil des Codeausschnitts) wurde 
+        <span class="code">images</span> mit dem Wert <span class="code">1</span> initialisiert. Hier wird 
+        dieser Wert eingef&uuml;gt und postinkrementiert, so dass bei der 
+        n&auml;chsten Verwendung oder beim Einf&uuml;gen eines Bildes (mit 
+        entsprechender Verwendung der Variablen in der Beschriftung) jeweils korrekt 
         gez&auml;hlt w&uuml;rde. Diese Funktion wurde auch f&uuml;r die 
         Codeausschnitte auf dieser Seite verwendet, wo sie mehr als nur 
         Beispielcharakter hat, da mehrere davon verwendet wurden.
@@ -194,8 +195,8 @@ block content
       <p>
         Dies macht insbesondere f&uuml;r immer wiederkehrende Teile des 
         Seitendesigns Sinn. So wurden der Kopfteil, die Navigationsleiste und die 
-        Fu&szlig;zeile als <span class="code">include</span> bereits in de Template
-        <span class="code">main.pug</span> realisiert.
+        Fu&szlig;zeile jeweils als <span class="code">include</span> in einer seperaten Datei
+        realisiert und in die Template <span class="code">main.pug</span> eingebunden.
         
       </p>
       <pre>header
@@ -371,6 +372,15 @@ ul
         werden kann. Dabei ist zu beachten, das dieser Code dann beim 
         Kompilieren der Template in eine HTML-Datei interpretiert wird. Deshalb 
         kann mit ihnen allein kein dynamischer Inhalt erzeugt werden.
+        
+      </p>
+      <h5>Zugriff auf externe Daten</h5>
+      <p>
+        Mittels Filtern oder Inline-Code ist es auch m&ouml;glich auf Daten in
+        seperaten Dateien oder eine Datenbank zuzugreifen. Diese k&ouml;nnen dann
+        verwendet werden, um Inhalte zu erstellen. Das oben gezeigte Beispiel einer 
+        Tabelle w&auml;re bei gr&ouml;&szlig;erer Datenmenge ein Kandidat f&uuml;r 
+        die Umsetzung mit externen Daten.
         
       </p>
       <h4>Umwandlung von Pug in HTML</h4>
