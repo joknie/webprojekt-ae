@@ -1,0 +1,17 @@
+nav.invert
+
+  - 
+    const fruits = {
+      Index:"Übersicht",
+      PAP:"Programmablaufplan",
+      Inhalt:"Template Engine Pug",
+      Pug:"Codebeispiel Pug"
+    };   
+ 
+  each value, key in fruits  
+    - var url = key + ".html";
+    if key == pagename
+      a.active(href=url) #{value}
+    else  
+      a(href=url) #{value}
+    
