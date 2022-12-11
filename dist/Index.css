@@ -59,6 +59,7 @@ ol {
     background-color: var(--fg);
     color: var(--bg);
     text-decoration: none;
+    transition: 0.4s;
 }
 
 .invert a.active {
