@@ -19,7 +19,7 @@ body {
 p,
 ol,
 table,
-.navbar {
+nav {
     margin-left: auto;
     margin-right: auto;
     font-family: var(--serifs);
@@ -47,7 +47,8 @@ ol {
     overflow: hidden;
 }
 
-nav a {
+nav a,
+.invert a {
     float: inherit;
     color: var(--bg);
     text-align: center;
@@ -57,14 +58,16 @@ nav a {
     margin: -0.4vmin;
 }
 
-nav a:hover {
+nav a:hover,
+.invert a:hover {
     background-color: var(--fg);
     color: var(--bg);
     text-decoration: none;
     transition: 0.4s;
 }
 
-nav a.active {
+nav a.active,
+.invert a.active {
     color: var(--fg);
     background-color: var(--bg);
 }
