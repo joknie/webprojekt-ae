@@ -220,6 +220,40 @@ table
         Arrays erreicht.
         
       </p>
+      <p>
+        Zum Vergleich die Tabelle in HTML so wie der gezeigte Code sie erzeugt.
+        Neben der Lesbarkeit soll dies auch die einfachere Anpassbar- und 
+        Erweiterbarkeit des Baus der Tabelle mit <span class="name">Pug</span> demonstrieren.
+        
+      </p>
+      <pre>&lt;table&gt;
+  &lt;tr&gt;         
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td class="last-in-row"&gt;Alice&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;         
+    &lt;td&gt;2&lt;/td&gt;
+    &lt;td class="last-in-row"&gt;Bob&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;         
+    &lt;td&gt;3&lt;/td&gt;
+    &lt;td class="last-in-row"&gt;Charlie&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;         
+    &lt;td&gt;4&lt;/td&gt;
+    &lt;td class="last-in-row"&gt;Dave&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;         
+    &lt;td&gt;5&lt;/td&gt;
+    &lt;td class="last-in-row"&gt;Eve&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;         
+    &lt;td class="last-in-col"&gt;6&lt;/td&gt;
+    &lt;td class="last-in-row last-in-col"&gt;Frank&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+      <p class="caption">Codeausschnitt 4 - Die Tabelle in HTML </p>
       <h4>Weitere Funktionen</h4>
       <p>Weitere Funktionen, die <span class="name">Pug</span> bereitstellt, die aber im 
         Rahmen dieses Projekts nicht eingesetzt wurden, sollen trotzdem kurz 
@@ -261,7 +295,7 @@ ul
 </pre>
         </div>
       </div>
-      <p class="caption">Codebeispiel 4 - Mixin zum Erzeugen einer Liste<br>
+      <p class="caption">Codebeispiel 5 - Mixin zum Erzeugen einer Liste<br>
         Quelle: 
         <a href="https://pugjs.org/language/mixins.html">&#8618;Pug Dokumentation: Mixins</a>
         
