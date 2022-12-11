@@ -2,9 +2,17 @@ header
   h1.invert Webprojekt
   h2 Johannes Knieling, FIAE 14
 
-nav
-  p.invert.
-    #[a(href='Index.html') &Uuml;bersicht]
-    #[a(href='PAP.html') Programmablaufplan]
-    #[a.active(href='Inhalt.html') Template Engine Pug]      
-    #[a(href='Pug.html') Codebeispiel Pug]
+nav.invert
+
+  - 
+    const fruits = {
+      Index:"Übersicht",
+      PAP:"Programmablaufplan",
+      Inhalt:"Template Engine Pug",
+      Pug:"Codebeispiel Pug"
+    };   
+  
+  each value, key in fruits  
+    - var url = key + ".html";
+    a(href=url) #{value}
+    
