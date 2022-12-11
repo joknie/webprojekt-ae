@@ -1,20 +1,18 @@
-nav.invert
+- 
+  const pages = {
+    Index:"Übersicht",
+    PAP:"Programmablaufplan",
+    Inhalt:"Template Engine Pug",
+    Pug:"Codebeispiele Pug"
+  };   
 
-  - 
-    const pages = {
-      Index:"Übersicht",
-      PAP:"Programmablaufplan",
-      Inhalt:"Template Engine Pug",
-      Pug:"Codebeispiel Pug"
-    };   
+- var capture = filename.match(/(\w+)\.pug/);
+- var pagename= capture[0].replace(/\.pug/, "");
 
-  - var capture = filename.match(/(\w+)\.pug/);
-  - var pagename= capture[0].replace(/\.pug/, "");
- 
-  each value, key in pages
+each value, key in pages
+  if key == pagename
+    span.active #{value}
+  else  
     - var url = key + ".html";
-    if key == pagename
-      a.active(href=url) #{value}
-    else  
-      a(href=url) #{value}
-    
+    a(href=url) #{value}
+  

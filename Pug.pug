@@ -1,0 +1,247 @@
+extends _templates/main.pug
+
+block content
+
+  - var snippets = 1;
+
+  include _includes/Disclaimer.pug
+
+  h3 Kommentierte Codebeispiele
+
+  p.
+    Besonders interessante Teile der bei der Erstellung der Seite
+    #[span.code Inhalt.html] beteiligten #[span.code pug]-Dateien werden hier 
+    gezeigt und kommentiert.
+
+  h4 Template main.pug
+  
+  p. 
+    Die Haupttemplate #[span.code main.pug] stellt f&uuml;r die Seite das
+    HTML-Ger&uuml;st bereit. Sie benutzt sowohl #[span.code include], um andere
+    Dateien als Teil von sich selbst einzubinden, als auch einen
+    #[span.code block], der von erbenden Dateien zu bef&uuml;llen ist.
+
+  pre.
+    doctype html
+    html(lang="en")
+      head 
+        meta(charset="UTF-8")
+        title Webprojekt Johannes Knieling (FIAE14)
+        link(rel="stylesheet" href="Index.css")
+
+      body
+
+        header
+          include ../_includes/Header.pug
+            
+        nav  
+          include ../_includes/Nav.pug
+
+        main
+          block content
+            p You should never see this!
+        
+        footer
+          include ../_includes/Footer.pug
+
+  p.caption. 
+    Codebeispiel #{snippets++} - Die Datei _templates/main.pug
+
+  p. 
+    Zu sehen ist, dass auch Tags wie #[span.code meta] 
+    Attribute in der #[span.name Pug]-Notation zugewiesen werden k&ouml;nnen.
+
+  p. 
+    Der Tag #[span.code doctype] erlaubt das einfacher Einbinden 
+    gebr&auml;chlicher Dokumenttypen. Welche dies sind, ist in 
+    #[a(href="https://pugjs.org/language/doctype.html" target="_blank") &#8618;der #[span.name Pug]-Dokumentation]
+    nachzuschlagen.
+
+  p.
+    Innerhalb von #[span.code body] werden die Bereiche #[span.code header],
+    #[span.code nav], #[span.code main] und #[span.code footer] definiert. In
+    drei davon wird eine #[span.code include]-Datei eingebunden. Nur f&uuml;r 
+    #[span.code main] wird ein #[span.code block] definiert, der von Dateien,
+    die diese Template verwenden (erben), gef&uuml;llt werden sollte. Tun sie 
+    dies nicht, wird stattdessen der hier angegebene Defaultblock verwendet.
+    Der Text im #[span.code p]-Tag dient in diesem Projekt gewisserma&szlig;en 
+    als Fehlermeldung.
+
+  h4 Die Includes 
+
+  p. 
+    Der Inhalt einer mittels #[span.code include] eingebundenen Datei wird 
+    direkt in die aufrufende Datei eingebunden. Lediglich die Einr&uuml;ckung
+    wird entsprechend angepasst.
+
+  pre.
+    h1.invert Webprojekt
+    h2 Johannes Knieling, FIAE14
+  
+  p.caption Codeausschnitt #{snippets++} - Header.pug
+
+  pre. 
+    p.invert &amp;copy; 2022 Johannes Knieling
+
+  p.caption Codeausschnitt #{snippets++} - Footer.pug
+
+  p. 
+    Diese beiden Dateien sind, abgesehen von ihrer Wiederverwendbarkeit, 
+    &auml;u&szlig;erst unspektakul&auml;r. Daf&uuml;r ist die in 
+    #[span.code nav.pug] enthaltene Definition der Navigationsleiste umso 
+    interessanter.
+
+  pre. 
+    - 
+      const pages = {
+        Index:"Übersicht",
+        PAP:"Programmablaufplan",
+        Inhalt:"Template Engine Pug",
+        Pug:"Codebeispiele Pug"
+      };   
+
+    - var capture = filename.match(/(\w+)\.pug/);
+    - var pagename= capture[0].replace(/\.pug/, "");
+
+    each value, key in pages
+      if key == pagename
+        span.active \#{value}
+      else  
+        - var url = key + ".html";
+        a(href=url) \#{value}
+
+  p.caption Codeausschnitt #{snippets++} - Nav.pug
+
+  p. 
+    In dieser Datei wird die Navigationsleiste mit Hilfe von JavaScript-Code
+    generiert. Die Spiegelstriche geben an, das die jeweilige Zeile oder der 
+    jeweilige Block (Man beachte den nur scheinbar einsamen Spiegelstrich in 
+    der Zeile vor Beginn der Deklaration der Konstante #[span.code pages]!) als 
+    JavaScript-Code interpretiert werden soll.
+
+  p.
+    Die Konstante #[span.code pages] wird als JavaScript-Objekt mit 
+    Key-Value-Paaren initialisiert. Die Keys geben den Dateinamen, auf den 
+    verlinkt werden soll, ohne Endung an, die Values den Text, der als Link 
+    angezeigt werden soll.
+
+  p. 
+    Die 
+    #[a(href="https://pugjs.org/api/reference.html" target="_blank")  &#8618;API von #[span.name Pug]]
+    stellt einige Variablen zur Verf&uuml;gung, auf die mit JavaScript 
+    zugegriffen werden kann. #[span.code filename] stellt die vollst&auml;ndige
+    Pfadangabe der Datei bereit. Dabei ist zu beachten, dass sie beim Vererben
+    nicht #[span.code Nav.pug], sondern die erbende Datei beinhaltet, was hier 
+    sehr n&uuml;tzlich ist.
+
+  p. 
+    Zun&auml;chst wird mit regul&auml;ren Ausdr&uuml;cken der Dateiname ohne
+    weitere Pfadangabe isoliert und die Endung entfernt.
+
+  p. 
+    Dann wird &uuml;ber die eingangs definierte Map iteriert. Es wird 
+    gepr&uuml;ft, ob der aktuelle Key gleich dem Dateinamen ohne Endung ist. 
+    Ist dies der Fall, wird der Text mit der Klasse #[span.code .active] 
+    statt als Link formatiert. Andernfalls wird dem Key die Dateiendung html 
+    angeh&auml;ngt. Dies muss mittels einer Variablen erfolgen, da eine direkte 
+    Komposition dieser relativen URL im #[span.code a]-Tag nicht m&ouml;glich 
+    ist. Schlie&szlig;lich wird der Link mit dem Value als Linktext ausgegeben.
+
+  h4 Die Datei Inhalt.pug
+
+  p. 
+    Der Name &#8222;Inhalt&#8220; war in der Aufgabenstellung f&uuml;r eine
+    Seite mit frei w&auml;hlbarem Inhalt vorgegeben. Hier erh&auml;lt er eine
+    doppelte Bedeutung, denn in #[span.code Inhalt.pug] findet sich der
+    eigentliche Seiteninhalt, denn in den bisher betrachteten Dateien finden
+    sich die alle Seiten gemeinsamen Elemente.
+
+  p.
+    Aufgrund des Umfangs der Datei werden hier nur ausgew&auml;hlte Ausschnitte
+    n&auml;her betrachtet. Ein Gro&szlig;teil der Datei ist Flie&szlig;text 
+    innerhalb von #[span.code p]-Tags, die nicht sonderlich interessant sind.
+
+  p.
+    Wie auf #[a(href="Inhalt.html") Inhalt.html] selbst erw&auml;hnt, erweitert 
+    #[span.code Inhalt.pug] die Template #[span.code main.pug] und f&uuml;llt 
+    deren Block #[span.code content] mit Leben.
+
+  pre. 
+    - var snippets = 1
+    (...)
+    p.caption.
+      Codeausschnitt \#{snippets++} - Ein Beispiel f&amp;uuml;r Formatierung in Pug
+      \#[br/] Die Linkadresse wurde zu Gunsten der Lesbarkeit entfernt.
+    (...)
+    p.caption Codeausschnitt \#{snippets++} - Die ersten Zeilen von Inhalt.pug
+    (...)
+    p.caption. 
+      Codeausschnitt \#{snippets++} - Der Teil von main.pug, an dem der Block
+      content eingef&uuml;gt wird
+    (...)
+
+  p.caption. 
+    Codeausschnitt #{snippets++} - Nummerierung von Codeausschnitten mit Hilfe
+    einer Variablen
+
+  p.
+    Eine einfache und zugleich sehr hilfreiche Anwendung der direkten
+    Integration von JavaScript ist die durchlaufende Nummerierung von Elementen
+    wie Abbildungen oder &ndash; wie hier &ndash; Codeausschnitten. Nach jeder
+    Verwendung wird die Variable #[span.code snippets] inkrementiert. Dadurch 
+    ist bei sp&auml;terem Einf&uuml;gen oder Entfernen solcher Elemente keine
+    weitere Anpassung der Nummerierung n&ouml;tig.
+
+  pre. 
+    li.
+      Da \#[span.name Pug] auf \#[span.name Node.js] basiert, kann es, wenn 
+      \#[span.name Node.js] auf dem System installiert ist, &uuml;ber 
+      entsprechende Aufrufe des Node Package Managers \#[span.name npm] 
+      installiert und damit umgewandelt werden.
+    li
+      | Eine Option, die zum Experimentieren einl&auml;dt, sind 
+      | Online-Konverter, die oft auch eine Umwandlung in Echtzeit 
+      | bereitstellen. Beispiele:
+      ul
+        li (...)
+
+  p.caption. 
+    Codeausschnitt #{snippets++} - Zwei M&ouml;glichkeiten, Textbl&ouml;cke
+    mit mehreren Zeilen zu definieren
+
+  p. 
+    Bei der #[a(href="Inhalt.html") Vorstellung von #[span.name Pug]] wurde
+    bereits die Notation #[span.code p.] f&uuml;r einen Absatz, der mehrere
+    Zeilen Quelltext umfassen soll, vorgestellt. Diese Notation kann auch
+    auf andere Tags wie Listen oder den hier f&uuml;r die Codeausschnitte
+    verwendeten #[span.code pre]-Tag angewendet werden.
+
+  p.
+    Es gibt eine weitere M&ouml;glichkeit, solche Bl&ouml;cke auszuzeichnen, 
+    n&auml;mlich den im zweiten Listenelement des Codeausschnitts gezeigten
+    &#8222;Piped Text&#8220;. Dieser l&auml;sst sich mit Zeilen mit Tags 
+    innerhalb des Blocks kombinieren. Dies ist mit der untergeordneten
+    #[span.code ul] angedeutet.
+
+  p.
+    In diesem Projekt wurde f&uuml;r diese aber &uuml;berwiegend auf die Variante
+    Punkt und  #[span.code \#[...]]-Notation zur&uuml;ckgegriffen. Die 
+    Unterschiede zwischen beiden werden in 
+    #[a(href="https://pugjs.org/language/plain-text.html")  &#8618;der #[span.name Pug]-Dokumentation zum Thema Plain Text] 
+    erl&auml;utert.
+
+  h4 Das Github-Repository
+
+  p.
+    Das gesamte Projekt ist 
+    #[a(href="https://github.com/joknie/webprojekt-ae" target="_blank") &#8618;auf Github als Repository]
+    hochgeladen. Dort finden sich auch alle Dateien, die nicht Teil der Abgabe
+    des Projekts waren, also insbesondere die #[span.code .pug]-Dateien.
+
+  h4 &Uuml;brigens&hellip;
+
+  p.
+    &hellip;wurde auch diese Seite mit #[span.name Pug] erstellt. Auf eine 
+    Vorstellung des Codes f&uuml;r diese Seite wurde aber verzichtet, um das 
+    Abgleiten in eine endlose Rekursion von Seiten, welche die vorangegangene 
+    Seite erl&auml;utern, von Anfang an zu verhindern. &#128521;

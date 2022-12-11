@@ -10,7 +10,7 @@
       <h1 class="invert">Webprojekt</h1>
       <h2>Johannes Knieling, FIAE14</h2>
     </header>
-    <nav class="invert"><a href="Index.html">Übersicht</a><a href="PAP.html">Programmablaufplan</a><a class="active" href="Inhalt.html">Template Engine Pug</a><a href="Pug.html">Codebeispiel Pug</a>
+    <nav> <a href="Index.html">Übersicht</a><a href="PAP.html">Programmablaufplan</a><span class="active">Template Engine Pug</span><a href="Pug.html">Codebeispiele Pug</a>
     </nav>
     <main>
       <p><span class="bold">Hinweis:</span> Auf dieser Seite befinden sich mehrere Links, die 
@@ -18,7 +18,6 @@
         gekennzeichnet und werden in einem neuen Tab oder Fenster ge&ouml;ffnet. 
         F&uuml;r die verlinkten Seiten und deren Inhalte kann keine 
         Verantwortung &uuml;bernommen werden.
-        
       </p>
       <h3>PUG als HTML-Pr&auml;prozessor</h3>
       <p>
@@ -29,8 +28,8 @@
         
       </p>
       <div class="center"><img class="pad-the-dog" src="img/pug.png"/></div>
-      <p class="caption"> Abbildung 1 - Das Logo von Pug zeigt einen Mops (engl. pug) 
-         <br/> Quelle: 
+      <p class="caption">Abbildung 1 - Das Logo von Pug zeigt einen Mops (engl. pug) 
+        <br/> Quelle: 
         <a href="https://github.com/pugjs/pug-logo/blob/master/PNG/pug-final-logo_-colour-128.png">&#8618;pug-logo Github-Repository von pugjs</a>
         
       </p>
@@ -39,8 +38,8 @@
         <a href="https://github.com/pugjs/pug" target="_blank">&#8618;Template Engine <span class="name">Pug</span></a>
         bietet eine vereinfachte Markupsprache, die in HTML umgewandelt werden 
         kann. Dazu verwendet sie die JavaScript-Laufzeitumgebung 
-        <span class="name">Node.js</span>, mit der ein:e Benutzer:in aber nicht 
-        notwendigerweise interagieren muss.
+        <span class="name">Node.js</span>, mit der ein:e Benutzer:in bei der Benutzung von
+        <span class="name">Pug</span> aber nicht notwendigerweise interagieren muss.
         
       </p>
       <p>Neben dem vereinfachten Markup bietet <span class="name">Pug</span> Funktionen, die 
@@ -113,7 +112,7 @@ p.caption.
       </p>
       <h4>Interpolation</h4>
       <p>
-        In Codeausschnitt 1 ist auch zu sehen, wie Tags innerhalb 
+        Im Codeausschnitt ist auch zu sehen, wie Tags innerhalb 
         eines ansonsten als Text behandelten Blocks verwendet werden 
         k&ouml;nnen. Mit dem Konstrukt 
         <span class="code">#[&lt;Tag&gt; &lt;Inhalt&gt;</span>] wird angezeigt, dass dieser
@@ -122,16 +121,65 @@ p.caption.
       </p>
       <p>
         Mit dem Mittel der Interpolation k&ouml;nnen auch zuvor definierte 
-        Variablen in Texte eingef&uuml;gt werden. In der Beschriftung wird dies
-        verwendet, um die Nummerierung des Bildes festzulegen. Am Beginn des 
-        Dokuments (nicht Teil des Codeausschnitts) wurde <span class="code">images</span> mit
-        dem Wert <span class="code">1</span> initialisiert. Hier wird dieser Wert 
-        eingef&uuml;gt und postinkrementiert, so dass bei der n&auml;chsten
-        Verwendung oder beim Einf&uuml;gen eines Bildes (mit entsprechender
-        Verwendung der Variablen in der Beschriftung) jeweils korrekt 
+        Variablen in Texte eingef&uuml;gt werden. Dazu wird das sehr &auml;hnliche
+        Konstrukt <span class="code">#{&lt;Variablenname&gt;}</span> verwendent. In der 
+        Beschriftung des Bildes wird damit die Nummerierung des Bildes realisiert. 
+        Am Beginn des Dokuments (nicht Teil des Codeausschnitts) wurde 
+        <span class="code">images</span> mit dem Wert <span class="code">1</span> initialisiert. Hier wird 
+        dieser Wert eingef&uuml;gt und postinkrementiert, so dass bei der 
+        n&auml;chsten Verwendung oder beim Einf&uuml;gen eines Bildes (mit 
+        entsprechender Verwendung der Variablen in der Beschriftung) jeweils korrekt 
         gez&auml;hlt w&uuml;rde. Diese Funktion wurde auch f&uuml;r die 
         Codeausschnitte auf dieser Seite verwendet, wo sie mehr als nur 
         Beispielcharakter hat, da mehrere davon verwendet wurden.
+        
+      </p>
+      <h4>Vererbung</h4>
+      <p>Templates k&ouml;nnen in <span class="name">Pug</span> andere Templates erweitern 
+        und deren Inhalt erben. In einer vererbenden Template k&ouml;nnen 
+        Bl&ouml;cke definiert werden, die entweder mit einen Standardinhalt 
+        gef&uuml;llt oder in der Kindtemplate definiert und ersetzt werden 
+        k&ouml;nnen.
+        
+      </p>
+      <p>
+        Ein Verwendungszweck daf&uuml;r ist das Erstellen einer Template 
+        f&uuml;r das Seitenlayout, in die der eigentliche, von Seite zu Seite
+        variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
+        
+      </p>
+      <p>Diese Seite und <a href="Pug.html">die Codebeispiele</a> werden beide aus
+        einer gemeinsamen Template abgeleitet. Diese enth&auml;lt das 
+        HTML-Ger&uuml;st mit einem Platzhalter f&uuml;r den Inhalt. Die Dateien, aus 
+        denen die genannten Seiten generiert werden, erweitern diese lediglich.
+        
+      </p>
+      <pre>extends _templates/main.pug
+
+block content
+</pre>
+      <p class="caption">Codeausschnitt 2 - Die ersten Zeilen von Inhalt.pug</p>
+      <p>
+        In der ersten Zeile wird die Vererbung der Haupttemplate festgelegt. Die 
+        Anweisung <span class="code">block content</span> erzeugt einen Codeblock mit dem Namen
+        <span class="code">content</span>, der an der Stelle, wo er in der Haupttemplate erwartet 
+        wird, eingesetzt wird.
+        
+      </p>
+      <pre>main
+  block content
+    p You should never see this!  
+</pre>
+      <p class="caption">Codeausschnitt 3 - Der Teil von main.pug, an dem der Block
+        content eingef&uuml;gt wird
+        
+      </p>
+      <p>
+        In diesem Ausschnitt ist auch die M&ouml;glichkeit gezeigt, Defaultwerte
+        f&uuml;r Bl&ouml;cke anzugeben. Ist in einer Datei, die 
+        <span class="code">main.pug</span> erbt, kein Block mit dem Namen <span class="code">content</span> 
+        definiert, w&uuml;rde der Text &#8222;You should never see this!&#8220;
+        angezeigt.
         
       </p>
       <h4>Includes</h4>
@@ -145,14 +193,19 @@ p.caption.
       </p>
       <p>
         Dies macht insbesondere f&uuml;r immer wiederkehrende Teile des 
-        Seitendesigns Sinn. So wurden auf dieser Seite der Kopfteil, die
-        Navigationsleiste und die Fu&szlig;zeile als <span class="code">include</span> 
-        realisiert.
+        Seitendesigns Sinn. So wurden der Kopfteil, die Navigationsleiste und die 
+        Fu&szlig;zeile jeweils als <span class="code">include</span> in einer seperaten Datei
+        realisiert und in die Template <span class="code">main.pug</span> eingebunden.
         
       </p>
-      <pre>include _includes/Header.pug</pre>
-      <p class="caption">Codeausschnitt 2 - Einbinden von Kopfteil und 
-        Navigationsleiste in dieses Dokument
+      <pre>header
+  include ../_includes/Header.pug
+
+nav  
+  include ../_includes/Nav.pug
+</pre>
+      <p class="caption">Codeausschnitt 4 - Einbinden von Kopfteil und 
+        Navigationsleiste in der Template main.pug
         
       </p>
       <h4>Variablen, Iteration und Verzweigungen </h4>
@@ -192,7 +245,7 @@ p.caption.
       </table>
       <p class="caption">Tabelle 1 - Erzeugen einer Tabelle aus Daten</p>
       <p>
-        An dieser Tabelle ist zun&auml; nichts ungew&ouml;hnliches zu erkennen. 
+        An dieser Tabelle ist zun&auml;chst nichts ungew&ouml;hnliches zu erkennen. 
         Auch ein Blick in den Seitenquelltext zeigt nur eine herk&ouml;mmliche 
         HTML-Tabelle. In der <span class="name">Pug</span>-Template sieht diese Tabelle 
         allerdings so aus:
@@ -211,7 +264,7 @@ table
         td=i++
         td.last-in-row=item
 </pre>
-      <p class="caption">Codeausschnitt 3 - Erzeugen einer Tabelle aus Daten </p>
+      <p class="caption">Codeausschnitt 5 - Erzeugen einer Tabelle aus Daten </p>
       <p>
         Statt einer statischen Definition der Tabelle werden in diesem Code aus
         dem Array <span class="code">list</span> (unter Zuhilfenahme einer 
@@ -259,7 +312,7 @@ table
   &lt;/tr&gt;
 &lt;/table&gt;
 </pre>
-      <p class="caption">Codeausschnitt 4 - Die Tabelle in HTML </p>
+      <p class="caption">Codeausschnitt 6 - Die Tabelle in HTML </p>
       <h4>Weitere Funktionen</h4>
       <p>Weitere Funktionen, die <span class="name">Pug</span> bereitstellt, die aber im 
         Rahmen dieses Projekts nicht eingesetzt wurden, sollen trotzdem kurz 
@@ -301,7 +354,7 @@ ul
 </pre>
         </div>
       </div>
-      <p class="caption">Codebeispiel 5 - Mixin zum Erzeugen einer Liste<br>
+      <p class="caption">Codebeispiel 7 - Mixin zum Erzeugen einer Liste<br>
         Quelle: 
         <a href="https://pugjs.org/language/mixins.html">&#8618;Pug Dokumentation: Mixins</a>
         
@@ -311,20 +364,6 @@ ul
         Listen erzeugt.
         
       </p>
-      <h5>Vererbung</h5>
-      <p>Templates k&ouml;nnen in <span class="name">Pug</span> andere Templates erweitern 
-        und deren Inhalt erben. In einer vererbenden Template k&ouml;nnen 
-        Bl&ouml;cke definiert werden, die entweder mit einen Standardinhalt 
-        gef&uuml;llt oder in der Kindtemplate definiert und ersetzt werden 
-        k&ouml;nnen.
-        
-      </p>
-      <p>
-        Ein Verwendungszweck daf&uuml;r ist das Erstellen einer Template 
-        f&uuml;r das Seitenlayout, in die der eigentliche, von Seite zu Seite
-        variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
-        
-      </p>
       <h5>Filter</h5>
       <p>
         Eine komplexere Funktion sind Filter, mit denen Code in anderen
@@ -332,6 +371,15 @@ ul
         werden kann. Dabei ist zu beachten, das dieser Code dann beim 
         Kompilieren der Template in eine HTML-Datei interpretiert wird. Deshalb 
         kann mit ihnen allein kein dynamischer Inhalt erzeugt werden.
+        
+      </p>
+      <h5>Zugriff auf externe Daten</h5>
+      <p>
+        Mittels Filtern oder Inline-Code ist es auch m&ouml;glich auf Daten in
+        seperaten Dateien oder eine Datenbank zuzugreifen. Diese k&ouml;nnen dann
+        verwendet werden, um Inhalte zu erstellen. Das oben gezeigte Beispiel einer 
+        Tabelle w&auml;re bei gr&ouml;&szlig;erer Datenmenge ein Kandidat f&uuml;r 
+        die Umsetzung mit externen Daten.
         
       </p>
       <h4>Umwandlung von Pug in HTML</h4>
@@ -352,7 +400,7 @@ ul
           bereitstellen. Beispiele:
           <ul>
             <li><a href="https://pug2html.com/" target="_blank">&#8618;Pug2HTML</a> </li>
-            <li>LINK WIEDER FINDEN</li>
+            <li><a href="https://pughtml.com/" target="_blank">&#8618;Pug-HTML</a></li>
             <li><a href="https://www.cssportal.com/pug-to-html/" target="_blank">&#8618;Konverter bei {CSS}Portal</a></li>
           </ul>
         </li>
@@ -373,23 +421,28 @@ ul
         des Quelltexts gegen&uuml;ber HTML.
         
       </p>
-      <p>
-        In diesem Projekt wurden die M&ouml;glichkeiten, die sich durch die
-        zusa&auml;tzlichen Funktionen, die Pug bietet, bestenfalls angedeutet.
-        Neben der M&ouml;glichkeit, eine Website unter Ber&uuml;cksichtigung
-        des DRY-Prinzips aufzubauen, er&ouml;ffnet die Arbeit mit Daten einen
-        sehr gro&szlig;en Spielraum, von dem das oben gezeigte Beispiel des 
-        Generierens einer Tabelle nur ein winziger Teil ist.
+      <p>Die Modularisierung mittels <span class="code">include</span> und Vererbung 
+        erm&ouml;glicht eine Wiederverwendung von Seitenbausteinen ohne copy/paste.
+        Zudem erlaubt es eine einfachere und weniger fehleranf&auml;llige 
+        Bearbeitung solcher Bausteine.
         
       </p>
       <p>
-        Zum Abschluss noch ein Link zum 
-        <a href="Pug.html"><span class="name">Pug</span>-Code, aus der diese Seite erstellt wurde.</a> 
-        Vergleichen Sie diese doch einmal mit dem HTML-Quelltext dieser Seite
-        oder fügen Sie sie in einen der oben verlinkten Konverter ein! Gerne
-        k&ouml;nnen Sie auch das gesamte Projekt begutachten, denn es hat 
-        <a href="https://github.com/joknie/webprojekt-ae" target="_blank">&#8618;ein GitHub-Repo</a>.
+        In diesem Projekt wurden die M&ouml;glichkeiten, die sich durch die
+        zusa&auml;tzlichen Funktionen, die <span class="name">Pug</span> bietet, bestenfalls 
+        angedeutet. Neben der M&ouml;glichkeit, eine Website unter 
+        Ber&uuml;cksichtigung des DRY-Prinzips aufzubauen, er&ouml;ffnet die Arbeit 
+        mit Daten einen sehr gro&szlig;en Spielraum, von dem das oben gezeigte 
+        Beispiel des Generierens einer Tabelle oder der Navigationsleiste 
+        (vorgestellt als eines der <a href="Pug.html">Codebeispiele</a>) nur ein 
+        winziger Teil ist.
         
+      </p>
+      <p>
+        Dieses Projekt hat auch ein
+        <a href="https://github.com/joknie/webprojekt-ae" target="_blank">&#8618;ein GitHub-Repo</a>.
+        Dort k&ouml;nnen die <span class="code">Pug</span>-Dateien, die nicht zu den 
+        abgegebenen Dateien geh&ouml;ren, begutachtet werden.
       </p>
     </main>
     <footer>

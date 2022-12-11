@@ -3,7 +3,7 @@
     --fg: papayawhip;
     --highlight: aquamarine;
     --table-inner: grey;
-    
+
     --serifs: Georgia, 'Times New Roman', Times, serif;
     --sans: 'Trebuchet MS', 'Noto Sans', 'Droid Sans', Tahoma, Arial, sans-serif;
     --monospace: 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', Courier, monospace;
@@ -32,8 +32,8 @@ ol {
     width: 90%;
 }
 
-.invert,
-nav {
+nav,
+.invert {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -48,8 +48,7 @@ nav {
     overflow: hidden;
 }
 
-nav a,
-.invert a {
+nav a {
     float: inherit;
     color: var(--bg);
     text-align: center;
@@ -59,18 +58,22 @@ nav a,
     margin: -0.4vmin;
 }
 
-nav a:hover,
-.invert a:hover {
+nav a:hover {
     background-color: var(--fg);
     color: var(--bg);
     text-decoration: none;
     transition: 0.4s;
 }
 
-nav a.active,
-.invert a.active {
+nav .active {
+    float: inherit;
     color: var(--fg);
     background-color: var(--bg);
+    text-align: center;
+    font-size: 2.5vmin;
+    padding: 2vmin;
+    text-decoration: none;
+    margin: -0.4vmin;
 }
 
 .bold {

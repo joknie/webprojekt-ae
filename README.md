@@ -3,7 +3,7 @@
 This website was created as part of a class assignment. The working site is
 found in the folder /dist. 
 
-## root and _includes folders
+## root, _templates and _includes folders
 
 Aside from the usual README.md and .gitignore, the root folder only contains
 the .pug files from which some of the pages in dist were created. The subfolder
