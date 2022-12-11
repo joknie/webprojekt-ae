@@ -48,8 +48,7 @@ nav,
     overflow: hidden;
 }
 
-nav a,
-.invert a {
+nav a {
     float: inherit;
     color: var(--bg);
     text-align: center;
@@ -59,16 +58,14 @@ nav a,
     margin: -0.4vmin;
 }
 
-nav a:hover,
-.invert a:hover {
+nav a:hover {
     background-color: var(--fg);
     color: var(--bg);
     text-decoration: none;
     transition: 0.4s;
 }
 
-nav .active,
-.invert .active {
+nav .active {
     float: inherit;
     color: var(--fg);
     background-color: var(--bg);
