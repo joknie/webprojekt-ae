@@ -7,6 +7,9 @@ nav.invert
       Inhalt:"Template Engine Pug",
       Pug:"Codebeispiel Pug"
     };   
+
+  - var capture = filename.match(/(\w+)\.pug/);
+  - var pagename= capture[0].replace(/\.pug/, "");
  
   each value, key in pages
     - var url = key + ".html";
