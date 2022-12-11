@@ -22,9 +22,9 @@
       </p>
       <h3>Kommentierte Codebeispiele</h3>
       <p>
-        Auf dieser Seite werden Teile der bei der Erstellung der Seite
-        <span class="code">Inhalt.html</span> beteiligten <span class="code">pug</span>-Dateien gezeigt 
-        und kommentiert.
+        Besonders interessante Teile der bei der Erstellung der Seite
+        <span class="code">Inhalt.html</span> beteiligten <span class="code">pug</span>-Dateien werden hier 
+        gezeigt und kommentiert.
         
       </p>
       <h4>Template main.pug</h4>
@@ -93,9 +93,10 @@ h2 Johannes Knieling, FIAE14
 </pre>
       <p class="caption">Codeausschnitt 3 - Footer.pug</p>
       <p>
-        Diese beiden Dateien sind &auml;u&szlig;erst unspektakul&auml;r. Daf&uuml;r
-        ist die in <span class="code">nav.pug</span> enthaltene Definition der 
-        Navigationsleiste umso interessanter.
+        Diese beiden Dateien sind, abgesehen von ihrer Wiederverwendbarkeit, 
+        &auml;u&szlig;erst unspektakul&auml;r. Daf&uuml;r ist die in 
+        <span class="code">nav.pug</span> enthaltene Definition der Navigationsleiste umso 
+        interessanter.
         
       </p>
       <pre>- 
@@ -111,10 +112,10 @@ h2 Johannes Knieling, FIAE14
 
 each value, key in pages
   if key == pagename
-    span.active 
+    span.active #{value}
   else  
     - var url = key + ".html";
-    a(href=url) 
+    a(href=url) #{value}
 </pre>
       <p class="caption">Codeausschnitt 4 - Nav.pug</p>
       <p>
@@ -125,9 +126,10 @@ each value, key in pages
         JavaScript-Code interpretiert werden soll.
         
       </p>
-      <p>Die Konstante <span class="code">pages</span> wird als Map mit Key-Value-Paaren
-        initialisiert. Die Keys geben den Dateinamen, auf den verlinkt werden soll,
-        ohne Endung an, die Values den Text, der als Link angezeigt werden soll.
+      <p>Die Konstante <span class="code">pages</span> wird als JavaScript-Objekt mit 
+        Key-Value-Paaren initialisiert. Die Keys geben den Dateinamen, auf den 
+        verlinkt werden soll, ohne Endung an, die Values den Text, der als Link 
+        angezeigt werden soll.
         
       </p>
       <p>
@@ -148,11 +150,11 @@ each value, key in pages
       <p>
         Dann wird &uuml;ber die eingangs definierte Map iteriert. Es wird 
         gepr&uuml;ft, ob der aktuelle Key gleich dem Dateinamen ohne Endung ist. 
-        Ist dies der Fall, wird der &#8222;Link&#8220; als aktive Seite formatiert. 
-        Andernfalls wird dem Key die Dateiendung html angeh&auml;ngt. Dies muss 
-        mittels einer Variablen erfolgen, da eine direkte Komposition dieser
-        relativen URL im <span class="code">a</span>-Tag nicht m&ouml;glich ist. 
-        Schlie&szlig;lich wird der Link mit dem Value als Linktext ausgegeben.
+        Ist dies der Fall, wird der Text mit der Klasse <span class="code">.active</span> 
+        statt als Link formatiert. Andernfalls wird dem Key die Dateiendung html 
+        angeh&auml;ngt. Dies muss mittels einer Variablen erfolgen, da eine direkte 
+        Komposition dieser relativen URL im <span class="code">a</span>-Tag nicht m&ouml;glich 
+        ist. Schlie&szlig;lich wird der Link mit dem Value als Linktext ausgegeben.
         
       </p>
       <h4>Die Datei Inhalt.pug</h4>
@@ -168,6 +170,11 @@ each value, key in pages
         Aufgrund des Umfangs der Datei werden hier nur ausgew&auml;hlte Ausschnitte
         n&auml;her betrachtet. Ein Gro&szlig;teil der Datei ist Flie&szlig;text 
         innerhalb von <span class="code">p</span>-Tags, die nicht sonderlich interessant sind.
+        
+      </p>
+      <p>Wie auf <a href="Inhalt.html">Inhalt.html</a> selbst erw&auml;hnt, erweitert 
+        <span class="code">Inhalt.pug</span> die Template <span class="code">main.pug</span> und f&uuml;llt 
+        deren Block <span class="code">content</span> mit Leben.
         
       </p>
       <pre>- var snippets = 1
@@ -241,7 +248,10 @@ li
         <a href="https://github.com/joknie/webprojekt-ae" target="_blank">&#8618;auf Github als Repository</a>
         hochgeladen. Dort finden sich auch alle Dateien, die nicht Teil der Abgabe
         des Projekts waren, also insbesondere die <span class="code">.pug</span>-Dateien.
+        
       </p>
+      <h4>&Uuml;brigens&hellip;</h4>
+      <p>&hellip;wurde auch diese Seite mit <span class="name">Pug</span> erstellt. </p>
     </main>
     <footer>
       <p class="invert">&copy; 2022 Johannes Knieling</p>

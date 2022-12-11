@@ -14,9 +14,9 @@ block content
   h3 Kommentierte Codebeispiele
 
   p.
-    Auf dieser Seite werden Teile der bei der Erstellung der Seite
-    #[span.code Inhalt.html] beteiligten #[span.code pug]-Dateien gezeigt 
-    und kommentiert.
+    Besonders interessante Teile der bei der Erstellung der Seite
+    #[span.code Inhalt.html] beteiligten #[span.code pug]-Dateien werden hier 
+    gezeigt und kommentiert.
 
   h4 Template main.pug
   
@@ -91,9 +91,10 @@ block content
   p.caption Codeausschnitt #{snippets++} - Footer.pug
 
   p. 
-    Diese beiden Dateien sind &auml;u&szlig;erst unspektakul&auml;r. Daf&uuml;r
-    ist die in #[span.code nav.pug] enthaltene Definition der 
-    Navigationsleiste umso interessanter.
+    Diese beiden Dateien sind, abgesehen von ihrer Wiederverwendbarkeit, 
+    &auml;u&szlig;erst unspektakul&auml;r. Daf&uuml;r ist die in 
+    #[span.code nav.pug] enthaltene Definition der Navigationsleiste umso 
+    interessanter.
 
   pre. 
     - 
@@ -109,10 +110,10 @@ block content
 
     each value, key in pages
       if key == pagename
-        span.active #{value}
+        span.active \#{value}
       else  
         - var url = key + ".html";
-        a(href=url) #{value}
+        a(href=url) \#{value}
 
   p.caption Codeausschnitt #{snippets++} - Nav.pug
 
@@ -124,9 +125,10 @@ block content
     JavaScript-Code interpretiert werden soll.
 
   p.
-    Die Konstante #[span.code pages] wird als Map mit Key-Value-Paaren
-    initialisiert. Die Keys geben den Dateinamen, auf den verlinkt werden soll,
-    ohne Endung an, die Values den Text, der als Link angezeigt werden soll.
+    Die Konstante #[span.code pages] wird als JavaScript-Objekt mit 
+    Key-Value-Paaren initialisiert. Die Keys geben den Dateinamen, auf den 
+    verlinkt werden soll, ohne Endung an, die Values den Text, der als Link 
+    angezeigt werden soll.
 
   p. 
     Die 
@@ -144,11 +146,11 @@ block content
   p. 
     Dann wird &uuml;ber die eingangs definierte Map iteriert. Es wird 
     gepr&uuml;ft, ob der aktuelle Key gleich dem Dateinamen ohne Endung ist. 
-    Ist dies der Fall, wird der &#8222;Link&#8220; als aktive Seite formatiert. 
-    Andernfalls wird dem Key die Dateiendung html angeh&auml;ngt. Dies muss 
-    mittels einer Variablen erfolgen, da eine direkte Komposition dieser
-    relativen URL im #[span.code a]-Tag nicht m&ouml;glich ist. 
-    Schlie&szlig;lich wird der Link mit dem Value als Linktext ausgegeben.
+    Ist dies der Fall, wird der Text mit der Klasse #[span.code .active] 
+    statt als Link formatiert. Andernfalls wird dem Key die Dateiendung html 
+    angeh&auml;ngt. Dies muss mittels einer Variablen erfolgen, da eine direkte 
+    Komposition dieser relativen URL im #[span.code a]-Tag nicht m&ouml;glich 
+    ist. Schlie&szlig;lich wird der Link mit dem Value als Linktext ausgegeben.
 
   h4 Die Datei Inhalt.pug
 
@@ -163,6 +165,11 @@ block content
     Aufgrund des Umfangs der Datei werden hier nur ausgew&auml;hlte Ausschnitte
     n&auml;her betrachtet. Ein Gro&szlig;teil der Datei ist Flie&szlig;text 
     innerhalb von #[span.code p]-Tags, die nicht sonderlich interessant sind.
+
+  p.
+    Wie auf #[a(href="Inhalt.html") Inhalt.html] selbst erw&auml;hnt, erweitert 
+    #[span.code Inhalt.pug] die Template #[span.code main.pug] und f&uuml;llt 
+    deren Block #[span.code content] mit Leben.
 
   pre. 
     - var snippets = 1
@@ -235,3 +242,8 @@ block content
     #[a(href="https://github.com/joknie/webprojekt-ae" target="_blank") &#8618;auf Github als Repository]
     hochgeladen. Dort finden sich auch alle Dateien, die nicht Teil der Abgabe
     des Projekts waren, also insbesondere die #[span.code .pug]-Dateien.
+
+  h4 &Uuml;brigens&hellip;
+
+  p.
+    &hellip;wurde auch diese Seite mit #[span.name Pug] erstellt. 

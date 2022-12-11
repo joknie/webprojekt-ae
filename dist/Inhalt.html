@@ -113,7 +113,7 @@ p.caption.
       </p>
       <h4>Interpolation</h4>
       <p>
-        In Codeausschnitt 1 ist auch zu sehen, wie Tags innerhalb 
+        Im Codeausschnitt ist auch zu sehen, wie Tags innerhalb 
         eines ansonsten als Text behandelten Blocks verwendet werden 
         k&ouml;nnen. Mit dem Konstrukt 
         <span class="code">#[&lt;Tag&gt; &lt;Inhalt&gt;</span>] wird angezeigt, dass dieser
@@ -148,7 +148,7 @@ p.caption.
         variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
         
       </p>
-      <p>Diese Seite und das <a href="Pug.html">Codebeispiel</a> werden beide aus
+      <p>Diese Seite und <a href="Pug.html">die Codebeispiele</a> werden beide aus
         einer gemeinsamen Template abgeleitet. Diese enth&auml;lt das 
         HTML-Ger&uuml;st mit einem Platzhalter f&uuml;r den Inhalt. Die Dateien, aus 
         denen die genannten Seiten generiert werden, erweitern diese lediglich.
@@ -245,7 +245,7 @@ nav
       </table>
       <p class="caption">Tabelle 1 - Erzeugen einer Tabelle aus Daten</p>
       <p>
-        An dieser Tabelle ist zun&auml; nichts ungew&ouml;hnliches zu erkennen. 
+        An dieser Tabelle ist zun&auml;chst nichts ungew&ouml;hnliches zu erkennen. 
         Auch ein Blick in den Seitenquelltext zeigt nur eine herk&ouml;mmliche 
         HTML-Tabelle. In der <span class="name">Pug</span>-Template sieht diese Tabelle 
         allerdings so aus:
@@ -391,7 +391,7 @@ ul
           bereitstellen. Beispiele:
           <ul>
             <li><a href="https://pug2html.com/" target="_blank">&#8618;Pug2HTML</a> </li>
-            <li>LINK WIEDER FINDEN</li>
+            <li><a href="https://pughtml.com/" target="_blank">&#8618;Pug-HTML</a></li>
             <li><a href="https://www.cssportal.com/pug-to-html/" target="_blank">&#8618;Konverter bei {CSS}Portal</a></li>
           </ul>
         </li>
@@ -412,22 +412,28 @@ ul
         des Quelltexts gegen&uuml;ber HTML.
         
       </p>
-      <p>
-        In diesem Projekt wurden die M&ouml;glichkeiten, die sich durch die
-        zusa&auml;tzlichen Funktionen, die Pug bietet, bestenfalls angedeutet.
-        Neben der M&ouml;glichkeit, eine Website unter Ber&uuml;cksichtigung
-        des DRY-Prinzips aufzubauen, er&ouml;ffnet die Arbeit mit Daten einen
-        sehr gro&szlig;en Spielraum, von dem das oben gezeigte Beispiel des 
-        Generierens einer Tabelle nur ein winziger Teil ist.
+      <p>Die Modularisierung mittels <span class="code">include</span> und Vererbung 
+        erm&ouml;glicht eine Wiederverwendung von Seitenbausteinen ohne copy/paste.
+        Zudem erlaubt es eine einfachere und weniger fehleranf&auml;llige 
+        Bearbeitung solcher Bausteine.
         
       </p>
       <p>
-        Zum Abschluss noch ein Link zum 
-        <a href="Pug.html"><span class="name">Pug</span>-Code, aus der diese Seite erstellt wurde.</a> 
-        Vergleichen Sie diese doch einmal mit dem HTML-Quelltext dieser Seite
-        oder fügen Sie sie in einen der oben verlinkten Konverter ein! Gerne
-        k&ouml;nnen Sie auch das gesamte Projekt begutachten, denn es hat 
+        In diesem Projekt wurden die M&ouml;glichkeiten, die sich durch die
+        zusa&auml;tzlichen Funktionen, die <span class="name">Pug</span> bietet, bestenfalls 
+        angedeutet. Neben der M&ouml;glichkeit, eine Website unter 
+        Ber&uuml;cksichtigung des DRY-Prinzips aufzubauen, er&ouml;ffnet die Arbeit 
+        mit Daten einen sehr gro&szlig;en Spielraum, von dem das oben gezeigte 
+        Beispiel des Generierens einer Tabelle oder der Navigationsleiste 
+        (vorgestellt als eines der <a href="Pug.html">Codebeispiele</a>) nur ein 
+        winziger Teil ist.
+        
+      </p>
+      <p>
+        Dieses Projekt hat auch ein
         <a href="https://github.com/joknie/webprojekt-ae" target="_blank">&#8618;ein GitHub-Repo</a>.
+        Dort k&ouml;nnen die <span class="code">Pug</span>-Dateien, die nicht zu den 
+        abgegebenen Dateien geh&ouml;ren, begutachtet werden.
       </p>
     </main>
     <footer>
