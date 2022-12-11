@@ -32,6 +32,10 @@ ol {
     width: 90%;
 }
 
+ol {
+    padding-left: 5vmin;
+}
+
 nav,
 .invert {
     width: 100%;
