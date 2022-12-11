@@ -1,14 +1,14 @@
 nav.invert
 
   - 
-    const fruits = {
+    const pages = {
       Index:"Übersicht",
       PAP:"Programmablaufplan",
       Inhalt:"Template Engine Pug",
       Pug:"Codebeispiel Pug"
     };   
  
-  each value, key in fruits  
+  each value, key in pages
     - var url = key + ".html";
     if key == pagename
       a.active(href=url) #{value}
