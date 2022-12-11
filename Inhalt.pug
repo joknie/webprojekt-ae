@@ -126,6 +126,55 @@ block content
     Codeausschnitte auf dieser Seite verwendet, wo sie mehr als nur 
     Beispielcharakter hat, da mehrere davon verwendet wurden.
 
+  h4 Vererbung
+
+  p. 
+    Templates k&ouml;nnen in #[span.name Pug] andere Templates erweitern 
+    und deren Inhalt erben. In einer vererbenden Template k&ouml;nnen 
+    Bl&ouml;cke definiert werden, die entweder mit einen Standardinhalt 
+    gef&uuml;llt oder in der Kindtemplate definiert und ersetzt werden 
+    k&ouml;nnen.
+
+  p. 
+    Ein Verwendungszweck daf&uuml;r ist das Erstellen einer Template 
+    f&uuml;r das Seitenlayout, in die der eigentliche, von Seite zu Seite
+    variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
+
+  p.
+    Diese Seite und das #[a(href="Pug.html") Codebeispiel] werden beide aus
+    einer gemeinsamen Template abgeleitet. Diese enth&auml;lt das 
+    HTML-Ger&uuml;st mit einem Platzhalter f&uuml;r den Inhalt. Die Dateien, aus 
+    denen die genannten Seiten generiert werden, erweitern diese lediglich.
+
+  pre.
+    extends _templates/main.pug
+
+    block content
+
+  p.caption Codeausschnitt #{snippets++} - Die ersten Zeilen von Inhalt.pug
+
+  p.
+    In der ersten Zeile wird die Vererbung der Haupttemplate festgelegt. Die 
+    Anweisung #[span.code block content] erzeugt einen Codeblock mit dem Namen
+    #[span.code content], der an der Stelle, wo er in der Haupttemplate erwartet 
+    wird, eingesetzt wird.
+
+  pre. 
+    main
+      block content
+        p You should never see this!  
+
+  p.caption. 
+    Codeausschnitt #{snippets++} - Der Teil von main.pug, an dem der Block
+    content eingef&uuml;gt wird
+
+  p. 
+    In diesem Ausschnitt ist auch die M&ouml;glichkeit gezeigt, Defaultwerte
+    f&uuml;r Bl&ouml;cke anzugeben. Ist in einer Datei, die 
+    #[span.code main.pug] erbt, kein Block mit dem Namen #[span.code content] 
+    definiert, w&uuml;rde der Text &#8222;You should never see this!&#8220;
+    angezeigt.
+
   h4 Includes
 
   p. 
@@ -137,15 +186,20 @@ block content
 
   p. 
     Dies macht insbesondere f&uuml;r immer wiederkehrende Teile des 
-    Seitendesigns Sinn. So wurden auf dieser Seite der Kopfteil, die
-    Navigationsleiste und die Fu&szlig;zeile als #[span.code include] 
-    realisiert.
+    Seitendesigns Sinn. So wurden der Kopfteil, die Navigationsleiste und die 
+    Fu&szlig;zeile als #[span.code include] bereits in de Template
+    #[span.code main.pug] realisiert.
 
-  pre include _includes/Header.pug
+  pre.
+    header
+      include ../_includes/Header.pug
+
+    nav  
+      include ../_includes/Nav.pug
 
   p.caption. 
     Codeausschnitt #{snippets++} - Einbinden von Kopfteil und 
-    Navigationsleiste in dieses Dokument
+    Navigationsleiste in der Template main.pug
 
   h4 Variablen, Iteration und Verzweigungen 
 
@@ -291,20 +345,6 @@ block content
     Durch den zweifachen Aufruf von #[span.code +list]; am Ende des 
     #[span.name Pug]-Ausschnitts werden bei der Konversion zu HTML zwei 
     Listen erzeugt.
-
-  h5 Vererbung
-
-  p. 
-    Templates k&ouml;nnen in #[span.name Pug] andere Templates erweitern 
-    und deren Inhalt erben. In einer vererbenden Template k&ouml;nnen 
-    Bl&ouml;cke definiert werden, die entweder mit einen Standardinhalt 
-    gef&uuml;llt oder in der Kindtemplate definiert und ersetzt werden 
-    k&ouml;nnen.
-
-  p. 
-    Ein Verwendungszweck daf&uuml;r ist das Erstellen einer Template 
-    f&uuml;r das Seitenlayout, in die der eigentliche, von Seite zu Seite
-    variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
 
   h5 Filter
 

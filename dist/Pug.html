@@ -10,7 +10,7 @@
       <h1 class="invert">Webprojekt</h1>
       <h2>Johannes Knieling, FIAE14</h2>
     </header>
-    <nav class="invert"><a href="Index.html">Übersicht</a><a href="PAP.html">Programmablaufplan</a><a href="Inhalt.html">Template Engine Pug</a><a class="active" href="Pug.html">Codebeispiel Pug</a>
+    <nav> <a href="Index.html">Übersicht</a><a href="PAP.html">Programmablaufplan</a><a href="Inhalt.html">Template Engine Pug</a><span class="active">Codebeispiele Pug</span>
     </nav>
     <main>
       <p><span class="bold">Hinweis:</span> Auf dieser Seite befinden sich mehrere Links, die 
@@ -20,11 +20,18 @@
         Verantwortung &uuml;bernommen werden.
         
       </p>
-      <h3>Kommentiertes Codebeispiel</h3>
+      <h3>Kommentierte Codebeispiele</h3>
       <p>
-        Auf dieser Seite wird der Inhalt der bei der Erstellung der Seite
+        Auf dieser Seite werden Teile der bei der Erstellung der Seite
         <span class="code">Inhalt.html</span> beteiligten <span class="code">pug</span>-Dateien gezeigt 
         und kommentiert.
+        
+      </p>
+      <h4>Template main.pug</h4>
+      <p>Die Haupttemplate <span class="code">main.pug</span> stellt f&uuml;r die Seite das
+        HTML-Ger&uuml;st bereit. Sie benutzt sowohl <span class="code">include</span>, um andere
+        Dateien als Teil von sich selbst einzubinden, als auch einen
+        <span class="code">block</span>, der von vererbenden Dateien zu bef&uuml;llen ist.
         
       </p>
       <pre>doctype html
@@ -36,379 +43,205 @@ html(lang="en")
 
   body
 
-    - var images = 1
-    - var tables = 1
-    - var snippets = 1
-
-    include _includes/Header.pug
-    include _includes/Nav.pug
+    header
+      include ../_includes/Header.pug
+        
+    nav  
+      include ../_includes/Nav.pug
 
     main
-
-      p.
-        #[span.bold Hinweis:] Auf dieser Seite befinden sich mehrere Links, die 
-        auf externe Seiten verweisen. Diese sind mit dem Symbol &\#8618; 
-        gekennzeichnet und werden in einem neuen Tab oder Fenster ge&ouml;ffnet. 
-        F&uuml;r die verlinkten Seiten und deren Inhalte kann keine 
-        Verantwortung &uuml;bernommen werden.
-
-      h3 PUG als HTML-Pr&auml;prozessor
-
-      p.
-        Die Arbeit mit HTML erfordert in der Regel viel Tippen und viele 
-        Sonderzeichen, etwa bei der Eingabe von HTML-Tags und -Entit&auml;ten. 
-        Es gibt viele Ans&auml;tze, diese Arbeit zu vereinfachen und den Code 
-        lesbarer zu machen. Eine davon wird hier vorgestellt.
+      block content
+        p You should never see this!
     
-      div.center: img.pad-the-dog(src='img/pug.png')/
-      p.caption.
-        Abbildung #{images++} - Das Logo von Pug zeigt einen Mops (engl. pug) 
-        #[br/] Quelle: 
-        #[a(href="https://github.com/pugjs/pug-logo/blob/master/PNG/pug-final-logo_-colour-128.png") &\#8618;pug-logo Github-Repository von pugjs]
-
-      p. 
-        Die 
-        #[a(href="https://github.com/pugjs/pug" target="_blank") &\#8618;Template Engine #[span.name Pug]]
-        bietet eine vereinfachte Markupsprache, die in HTML umgewandelt werden 
-        kann. Dazu verwendet sie die JavaScript-Laufzeitumgebung 
-        #[span.name Node.js], mit der ein:e Benutzer:in aber nicht 
-        notwendigerweise interagieren muss.
-
-      p. 
-        Neben dem vereinfachten Markup bietet #[span.name Pug] Funktionen, die 
-        in HTML nicht oder nur unter Einbindung von JavaScript zu realisieren 
-        sind. Dazu geh&ouml;ren Variablen, Verzweigungen und Iterationen.
-
-      p.
-        #[span.name Pug] bietet zudem M&ouml;glichkeiten, Code aus anderen 
-        Dateien einzubinden. Dadurch soll das DRY-Prinzip (&\#8222;Don&acute;t 
-        Repeat Yourself&\#8220;) auch in HTML anwendbar gemacht werden.
-
-      h4 Format des Pug-Markups
-
-      p. 
-        #[span.name Pug] vereinfacht das Markup von HTML durch den Verzicht auf 
-        die spitzen Klammern und schlie&szlig;ende Tags. Attribute werden Tags 
-        in einfachen Klammern hinzugef&uuml;gt und Klassen k&ouml;nnen in einer 
-        Punktnotation angef&uuml;gt werden.
-
-      p. 
-        Der Beginn des vorangegangenen Abschnitts sieht in #[span.name Pug] zum 
-        Beispiel so aus:
-
-      pre.
-        h3 PUG als HTML-Pr&auml;prozessor
-
-        p.
-          Die Arbeit mit HTML erfordert in der Regel viel Tippen und viele 
-          Sonderzeichen, etwa bei der Eingabe von HTML-Tags und -Entit&auml;ten. 
-          Es gibt viele Ans&auml;tze, diese Arbeit zu vereinfachen und den Code 
-          lesbarer zu machen. Eine davon wird hier vorgestellt.
-    
-        div.center: img.pad-the-dog(src='img/pug.png')/
-        p.caption.
-          Abbildung \#{images++} - Das Logo von Pug zeigt einen Mops (engl. pug) 
-          \#[br/] Quelle: 
-          \#[a(href="...") &amp;\#8618;pug-logo Github-Repository von pugjs]
-    
-      p.caption.
-        Codeausschnitt #{snippets++} - Ein Beispiel f&uuml;r Formatierung in Pug
-        #[br/] Die Linkadresse wurde zu Gunsten der Lesbarkeit entfernt.
-
-      p. 
-        In der ersten Zeile wird eine &Uuml;berschrift definiert. Der 
-        #[span.code h3]-Tag steht ohne Klammern am Anfang der Zeile und 
-        ben&ouml;tigt keinen schlie&szlig;enden Tag am Ende. Der Inhalt des Tags 
-        wird im Anschluss ausgeschrieben.
-
-      p. 
-        Der Inhalt des folgenden #[span.code p]-Tags erstreckt sich &uuml;ber 
-        mehrere Zeilen. Dies wird durch die Schreibweise #[span.code p.] 
-        angezeigt. Der Inhalt des Tags muss entsprechend einger&uuml;ckt 
-        werden.
-
-      p.
-        Dann wird das Bild eingef&uuml;gt. Dem #[span.code img]-Tag wird in 
-        Klammern das #[span.code src]-Attribut &uuml;bergeben. Zudem wird mit 
-        der Punktnotation die Klasse #[span.code pad-the-dog] zugewiesen, die 
-        Padding um das Bild herum hinzuf&uuml;gt, da sonst der Rahmen, der im 
-        CSS der Seite f&uuml;r Bilder definiert ist, zu nahe am Bildinhalt 
-        w&auml;re, was nicht gut aussieht.
-
-      p.
-        Vor dem Bild wird ein #[span.code div] mit der Klasse 
-        #[span.code center] definiert, das daf&uuml;r sorgt, dass das Bild
-        korrekt zentriert wird. Es dient auch als Beispiel f&uuml;r &\#8222;Block 
-        Expansion&\#8220;, eine vereinfachte Schreibweise f&uuml;r verschachtelte
-        Tags, die mit Doppelpunkt und Leerzeichen aneinander gef&uuml;gt werden 
-        k&ouml;nnen.
-
-      h4 Interpolation
-
-      p. 
-        In Codeausschnitt 1 ist auch zu sehen, wie Tags innerhalb 
-        eines ansonsten als Text behandelten Blocks verwendet werden 
-        k&ouml;nnen. Mit dem Konstrukt 
-        #[span.code \#[&lt;Tag&gt; &lt;Inhalt&gt;]] wird angezeigt, dass dieser
-        Bereich beim Umwandeln in HTML als Tag interpoliert werden soll.
-
-      p. 
-        Mit dem Mittel der Interpolation k&ouml;nnen auch zuvor definierte 
-        Variablen in Texte eingef&uuml;gt werden. In der Beschriftung wird dies
-        verwendet, um die Nummerierung des Bildes festzulegen. Am Beginn des 
-        Dokuments (nicht Teil des Codeausschnitts) wurde #[span.code images] mit
-        dem Wert #[span.code 1] initialisiert. Hier wird dieser Wert 
-        eingef&uuml;gt und postinkrementiert, so dass bei der n&auml;chsten
-        Verwendung oder beim Einf&uuml;gen eines Bildes (mit entsprechender
-        Verwendung der Variablen in der Beschriftung) jeweils korrekt 
-        gez&auml;hlt w&uuml;rde. Diese Funktion wurde auch f&uuml;r die 
-        Codeausschnitte auf dieser Seite verwendet, wo sie mehr als nur 
-        Beispielcharakter hat, da mehrere davon verwendet wurden.
-
-      h4 Includes
-
-      p. 
-        Mit dem Befehl &\#8222;include&\#8220; kann in eine 
-        #[span.code .pug]-Datei der Inhalt einer anderen #[span.name Pug]-Datei 
-        eingbunden werden. Dieser wird an der jeweiligen Stelle eingef&uuml;gt. 
-        Dadurch k&ouml;nnen Seitenbausteine gem&auml;&szlig; dem DRY-Prinzip 
-        wiederverwendet werden.
-
-      p. 
-        Dies macht insbesondere f&uuml;r immer wiederkehrende Teile des 
-        Seitendesigns Sinn. So wurden auf dieser Seite der Kopfteil, die
-        Navigationsleiste und die Fu&szlig;zeile als #[span.code include] 
-        realisiert.
-
-      pre include _includes/Header.pug
-
-      p.caption. 
-        Codeausschnitt #{snippets++} - Einbinden von Kopfteil und 
-        Navigationsleiste in dieses Dokument
-
-      h4 Variablen, Iteration und Verzweigungen 
-
-      p. 
-        Eine interessante Funktionalit&auml;tserweiterung gegen&uuml;ber HTML
-        ist die M&ouml;glichkeit, Programmierfunktionen wie Variablen,
-        Verzweigungen und Iterationen direkt in der #[span.code .pug]-Datei zu 
-        verwenden.
-
-      p Ein Beispiel f&uuml;r den Einsatz dieser Funktionen :
-
-      - var i = 1
-      - var list = ["Alice", "Bob", "Charlie", "Dave", "Eve", "Frank"]    
-
-      table
-        each item in list
-          tr          
-            if i==list.length
-              td.last-in-col=i++
-              td.last-in-row.last-in-col=item
-            else
-              td=i++
-              td.last-in-row=item
-
-      p.caption Tabelle #{tables++} - Erzeugen einer Tabelle aus Daten
-
-      p.
-        An dieser Tabelle ist zun&auml; nichts ungew&ouml;hnliches zu erkennen. 
-        Auch ein Blick in den Seitenquelltext zeigt nur eine herk&ouml;mmliche 
-        HTML-Tabelle. In der #[span.name Pug]-Template sieht diese Tabelle 
-        allerdings so aus:
-
-      pre.
-        - var i = 1
-        - var list = ["Alice", "Bob", "Charlie", "Dave", "Eve", "Frank"]
-      
-        table
-          each item in list
-            tr
-              if i==list.length
-                td.last-in-col=i++
-                td.last-in-row.last-in-col=item
-              else
-                td=i++
-                td.last-in-row=item
-
-      p.caption Codeausschnitt #{snippets++} - Erzeugen einer Tabelle aus Daten 
-        
-      p.
-        Statt einer statischen Definition der Tabelle werden in diesem Code aus
-        dem Array #[span.code list] (unter Zuhilfenahme einer 
-        Z&auml;hlvariable #[span.code i]) die Tabellenzeilen generiert. Dies
-        erlaubt das einfache Entfernen oder Hinzuf&uuml;gen von Eintr&auml;gen.
-      
-      p.
-        Auch eine Verzweigung ist hier zu sehen. Die letzte Zeile der Tabelle 
-        muss aufgrund der CSS-Definitionen als solche ausgezeichnet werden. Dies 
-        wird durch einen Vergleich der Z&auml;hlvariablen mit der L&auml;nge des
-        Arrays erreicht.
-
-      p. 
-        Zum Vergleich die Tabelle in HTML so wie der gezeigte Code sie erzeugt.
-        Neben der Lesbarkeit soll dies auch die einfachere Anpassbar- und 
-        Erweiterbarkeit des Baus der Tabelle mit #[span.name Pug] demonstrieren.
-
-      pre. 
-        &lt;table&gt;
-          &lt;tr&gt;         
-            &lt;td&gt;1&lt;/td&gt;
-            &lt;td class="last-in-row"&gt;Alice&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;         
-            &lt;td&gt;2&lt;/td&gt;
-            &lt;td class="last-in-row"&gt;Bob&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;         
-            &lt;td&gt;3&lt;/td&gt;
-            &lt;td class="last-in-row"&gt;Charlie&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;         
-            &lt;td&gt;4&lt;/td&gt;
-            &lt;td class="last-in-row"&gt;Dave&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;         
-            &lt;td&gt;5&lt;/td&gt;
-            &lt;td class="last-in-row"&gt;Eve&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;         
-            &lt;td class="last-in-col"&gt;6&lt;/td&gt;
-            &lt;td class="last-in-row last-in-col"&gt;Frank&lt;/td&gt;
-          &lt;/tr&gt;
-        &lt;/table&gt;
-
-      p.caption Codeausschnitt #{snippets++} - Die Tabelle in HTML 
-
-      h4 Weitere Funktionen
-
-      p.
-        Weitere Funktionen, die #[span.name Pug] bereitstellt, die aber im 
-        Rahmen dieses Projekts nicht eingesetzt wurden, sollen trotzdem kurz 
-        angeschnitten werden.
-
-      h5 Mixins
-
-      p. 
-        Ein wiederverwendbarer Code-Block innerhalb einer Datei wird Mixin
-        genannt. Dieser wird einmal definiert und kann dann beliebig oft
-        wiederverwendet werden.
-
-      div.flex-container
-        div
-          p PUG Template:
-          pre.
-            //- Declaration
-            mixin list
-            ul
-              li foo
-              li bar
-              li baz
-            //- Use
-            +list
-            +list            
-        div
-          p Erzeugtes HTML:
-          pre.
-            &lt;ul&gt;
-              &lt;li&gt;foo&lt;/li&gt;
-              &lt;li&gt;bar&lt;/li&gt;
-              &lt;li&gt;baz&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;ul&gt;
-              &lt;li&gt;foo&lt;/li&gt;
-              &lt;li&gt;bar&lt;/li&gt;
-              &lt;li&gt;baz&lt;/li&gt;
-            &lt;/ul&gt;
-
-      p.caption.
-        Codebeispiel #{snippets++} - Mixin zum Erzeugen einer Liste#[br]
-        Quelle: 
-        #[a(href="https://pugjs.org/language/mixins.html") &\#8618;Pug Dokumentation: Mixins]
-
-      p. 
-        Durch den zweifachen Aufruf von #[span.code +list]; am Ende des 
-        #[span.name Pug]-Ausschnitts werden bei der Konversion zu HTML zwei 
-        Listen erzeugt.
-
-      h5 Vererbung
-
-      p. 
-        Templates k&ouml;nnen in #[span.name Pug] andere Templates erweitern 
-        und deren Inhalt erben. In einer vererbenden Template k&ouml;nnen 
-        Bl&ouml;cke definiert werden, die entweder mit einen Standardinhalt 
-        gef&uuml;llt oder in der Kindtemplate definiert und ersetzt werden 
-        k&ouml;nnen.
-
-      p. 
-        Ein Verwendungszweck daf&uuml;r ist das Erstellen einer Template 
-        f&uuml;r das Seitenlayout, in die der eigentliche, von Seite zu Seite
-        variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
-
-      h5 Filter
-
-      p. 
-        Eine komplexere Funktion sind Filter, mit denen Code in anderen
-        Programmiersprachen in eine #[span.name Pug]-Template eingef&uuml;gt 
-        werden kann. Dabei ist zu beachten, das dieser Code dann beim 
-        Kompilieren der Template in eine HTML-Datei interpretiert wird. Deshalb 
-        kann mit ihnen allein kein dynamischer Inhalt erzeugt werden.
-
-      h4 Umwandlung von Pug in HTML
-
-      p. 
-        Um eine in #[span.name Pug] geschriebene Template in eine HTML-Datei, 
-        die ein Browser anzeigen kann, umzuwandeln, gibt es mehrere 
-        M&ouml;glichkeiten:
-
-      ol
-        li.
-          Da #[span.name Pug] auf #[span.name Node.js] basiert, kann es, wenn 
-          #[span.name Node.js] auf dem System installiert ist, &uuml;ber 
-          entsprechende Aufrufe des Node Package Managers #[span.name npm] 
-          installiert und damit umgewandelt werden.
-        li
-          | Eine Option, die zum Experimentieren einl&auml;dt, sind 
-          | Online-Konverter, die oft auch eine Umwandlung in Echtzeit 
-          | bereitstellen. Beispiele:
-          ul
-            li #[a(href="https://pug2html.com/" target="_blank") &\#8618;Pug2HTML] 
-            li LINK WIEDER FINDEN
-            li #[a(href="https://www.cssportal.com/pug-to-html/" target="_blank") &\#8618;Konverter bei {CSS}Portal]
-        li. 
-          Plugins in einer IDE k&ouml;nnen ebenfalls Konvertierungen
-          durchf&uuml;hren. F&uuml;r dieses Projekt wurde das Plugin 
-          #[a.name(href="https://marketplace.visualstudio.com/items?itemName=Wscats.eno" target="_blank") &\#8618;Compile Hero Pro]
-          f&uuml;r #[span.name Visual Studio Code] verwendet.
-
-      h4 Fazit  
-        
-      p.
-        Die Arbeit mit #[span.name Pug] vereinfacht das Erstellen von Webseiten. 
-        Der Wegfall der HTML-typischen spitzen Klammern und der 
-        schlie&szlig;enden Tags erh&ouml;ht die Arbeitsgeschwindigkeit. 
-        Die Strukturierung durch Einr&uuml;ckungen erzwingt eine konsequent 
-        ordentliche Formatierung. Beides zusammen erh&ouml;ht die Lesbarkeit 
-        des Quelltexts gegen&uuml;ber HTML.
-
-      p.
-        In diesem Projekt wurden die M&ouml;glichkeiten, die sich durch die
-        zusa&auml;tzlichen Funktionen, die Pug bietet, bestenfalls angedeutet.
-        Neben der M&ouml;glichkeit, eine Website unter Ber&uuml;cksichtigung
-        des DRY-Prinzips aufzubauen, er&ouml;ffnet die Arbeit mit Daten einen
-        sehr gro&szlig;en Spielraum, von dem das oben gezeigte Beispiel des 
-        Generierens einer Tabelle nur ein winziger Teil ist.
-
-      p.
-        Zum Abschluss noch ein Link zum 
-        #[a(href="Pug.html") #[span.name Pug]-Code, aus der diese Seite erstellt wurde.] 
-        Vergleichen Sie diese doch einmal mit dem HTML-Quelltext dieser Seite
-        oder fügen Sie sie in einen der oben verlinkten Konverter ein! Gerne
-        k&ouml;nnen Sie auch das gesamte Projekt begutachten, denn es hat 
-        #[a(href="https://github.com/joknie/webprojekt-ae" target="_blank") &\#8618;ein GitHub-Repo].
-    
-    include _includes/Footer.pug
+    footer
+      include ../_includes/Footer.pug
 </pre>
+      <p class="caption">Codebeispiel 1 - Die Datei _templates/main.pug
+        
+      </p>
+      <p>Zu sehen ist, dass auch Tags wie <span class="code">meta</span> 
+        Attribute in der <span class="name">Pug</span>-Notation zugewiesen werden k&ouml;nnen.
+        
+      </p>
+      <p>Der Tag <span class="code">doctype</span> erlaubt das einfacher Einbinden 
+        gebr&auml;chlicher Dokumenttypen. Welche dies sind, ist in 
+        <a href="https://pugjs.org/language/doctype.html" target="_blank">&#8618;der <span class="name">Pug</span>-Dokumentation</a>
+        nachzuschlagen.
+        
+      </p>
+      <p>Innerhalb von <span class="code">body</span> werden die Bereiche <span class="code">header</span>,
+        <span class="code">nav</span>, <span class="code">main</span> und <span class="code">footer</span> definiert. In
+        drei davon wird eine <span class="code">include</span>-Datei eingebunden. Nur f&uuml;r 
+        <span class="code">main</span> wird ein <span class="code">block</span> definiert, der von Dateien,
+        die diese Template verwenden (erben), gef&uuml;llt werden sollte. Tun sie 
+        dies nicht, wird stattdessen der hier angegebene Defaultblock verwendet.
+        Der Text im <span class="code">p</span>-Tag dient hier gewisserma&szlig;en als
+        Fehlermeldung.
+        
+      </p>
+      <h4>Die Includes </h4>
+      <p>Der Inhalt einer mittels <span class="code">include</span> eingebundenen Datei wird 
+        direkt in die aufrufende Datei eingebunden. Lediglich die Einr&uuml;ckung
+        wird entsprechend angepasst.
+        
+      </p>
+      <pre>h1.invert Webprojekt
+h2 Johannes Knieling, FIAE14
+</pre>
+      <p class="caption">Codeausschnitt 2 - Header.pug</p>
+      <pre>p.invert &amp;copy; 2022 Johannes Knieling
+</pre>
+      <p class="caption">Codeausschnitt 3 - Footer.pug</p>
+      <p>
+        Diese beiden Dateien sind &auml;u&szlig;erst unspektakul&auml;r. Daf&uuml;r
+        ist die in <span class="code">nav.pug</span> enthaltene Definition der 
+        Navigationsleiste umso interessanter.
+        
+      </p>
+      <pre>- 
+  const pages = {
+    Index:"Übersicht",
+    PAP:"Programmablaufplan",
+    Inhalt:"Template Engine Pug",
+    Pug:"Codebeispiele Pug"
+  };   
+
+- var capture = filename.match(/(\w+)\.pug/);
+- var pagename= capture[0].replace(/\.pug/, "");
+
+each value, key in pages
+  if key == pagename
+    span.active 
+  else  
+    - var url = key + ".html";
+    a(href=url) 
+</pre>
+      <p class="caption">Codeausschnitt 4 - Nav.pug</p>
+      <p>
+        In dieser Datei wird die Navigationsleiste mit Hilfe von JavaScript-Code
+        generiert. Die Spiegelstriche geben an, das die jeweilige Zeile oder der 
+        jeweilige Block (Man beachte den nur scheinbar einsamen Spiegelstrich in 
+        der Zeile vor Beginn der Deklaration der Konstante <span class="code">pages</span>!) als 
+        JavaScript-Code interpretiert werden soll.
+        
+      </p>
+      <p>Die Konstante <span class="code">pages</span> wird als Map mit Key-Value-Paaren
+        initialisiert. Die Keys geben den Dateinamen, auf den verlinkt werden soll,
+        ohne Endung an, die Values den Text, der als Link angezeigt werden soll.
+        
+      </p>
+      <p>
+        Die 
+        <a href="https://pugjs.org/api/reference.html" target="_blank"> &#8618;API von <span class="name">Pug</span></a>
+        stellt einige Variablen zur Verf&uuml;gung, auf die mit JavaScript 
+        zugegriffen werden kann. <span class="code">filename</span> stellt die vollst&auml;ndige
+        Pfadangabe der Datei bereit. Dabei ist zu beachten, dass sie beim Vererben
+        nicht <span class="code">Nav.pug</span>, sondern die erbende Datei beinhaltet, was hier 
+        sehr n&uuml;tzlich ist.
+        
+      </p>
+      <p>
+        Zun&auml;chst wird mit regul&auml;ren Ausdr&uuml;cken der Dateiname ohne
+        weitere Pfadangabe isoliert und die Endung entfernt.
+        
+      </p>
+      <p>
+        Dann wird &uuml;ber die eingangs definierte Map iteriert. Es wird 
+        gepr&uuml;ft, ob der aktuelle Key gleich dem Dateinamen ohne Endung ist. 
+        Ist dies der Fall, wird der &#8222;Link&#8220; als aktive Seite formatiert. 
+        Andernfalls wird dem Key die Dateiendung html angeh&auml;ngt. Dies muss 
+        mittels einer Variablen erfolgen, da eine direkte Komposition dieser
+        relativen URL im <span class="code">a</span>-Tag nicht m&ouml;glich ist. 
+        Schlie&szlig;lich wird der Link mit dem Value als Linktext ausgegeben.
+        
+      </p>
+      <h4>Die Datei Inhalt.pug</h4>
+      <p>
+        Der Name &#8222;Inhalt&#8220; war in der Aufgabenstellung f&uuml;r eine
+        Seite mit frei w&auml;hlbarem Inhalt vorgegeben. Hier erh&auml;lt er eine
+        doppelte Bedeutung, denn in <span class="code">Inhalt.pug</span> findet sich der
+        eigentliche Seiteninhalt, denn in den bisher betrachteten Dateien finden
+        sich die alle Seiten gemeinsamen Elemente.
+        
+      </p>
+      <p>
+        Aufgrund des Umfangs der Datei werden hier nur ausgew&auml;hlte Ausschnitte
+        n&auml;her betrachtet. Ein Gro&szlig;teil der Datei ist Flie&szlig;text 
+        innerhalb von <span class="code">p</span>-Tags, die nicht sonderlich interessant sind.
+        
+      </p>
+      <pre>- var snippets = 1
+(...)
+p.caption.
+  Codeausschnitt #{snippets++} - Ein Beispiel f&amp;uuml;r Formatierung in Pug
+  #[br/] Die Linkadresse wurde zu Gunsten der Lesbarkeit entfernt.
+(...)
+p.caption Codeausschnitt #{snippets++} - Die ersten Zeilen von Inhalt.pug
+(...)
+p.caption. 
+  Codeausschnitt #{snippets++} - Der Teil von main.pug, an dem der Block
+  content eingef&uuml;gt wird
+(...)
+</pre>
+      <p class="caption">Codeausschnitt 5 - Nummerierung von Codeausschnitten mit Hilfe
+        einer Variablen
+        
+      </p>
+      <p>
+        Eine einfache und zugleich sehr hilfreiche Anwendung der direkten
+        Integration von JavaScript ist die durchlaufende Nummerierung von Elementen
+        wie Abbildungen oder &ndash; wie hier &ndash; Codeausschnitten. Nach jeder
+        Verwendung wird die Variable <span class="code">snippets</span> inkrementiert. Dadurch 
+        ist bei sp&auml;terem Einf&uuml;gen oder Entfernen solcher Elemente keine
+        weitere Anpassung der Nummerierung n&ouml;tig.
+        
+      </p>
+      <pre>li.
+  Da #[span.name Pug] auf #[span.name Node.js] basiert, kann es, wenn 
+  #[span.name Node.js] auf dem System installiert ist, &uuml;ber 
+  entsprechende Aufrufe des Node Package Managers #[span.name npm] 
+  installiert und damit umgewandelt werden.
+li
+  | Eine Option, die zum Experimentieren einl&auml;dt, sind 
+  | Online-Konverter, die oft auch eine Umwandlung in Echtzeit 
+  | bereitstellen. Beispiele:
+  ul
+    li (...)
+</pre>
+      <p class="caption">Codeausschnitt 6 - Zwei M&ouml;glichkeiten, Textbl&ouml;cke
+        mit mehreren Zeilen zu definieren
+        
+      </p>
+      <p>Bei der <a href="Inhalt.html">Vorstellung von <span class="name">Pug</span></a> wurde
+        bereits die Notation <span class="code">p.</span> f&uuml;r einen Absatz, der mehrere
+        Zeilen Quelltext umfassen soll, vorgestellt. Diese Notation kann auch
+        auf andere Tags wie Listen oder den hier f&uuml;r die Codeausschnitte
+        verwendeten <span class="code">pre</span>-Tag angewendet werden.
+        
+      </p>
+      <p>
+        Es gibt eine weitere M&ouml;glichkeit, solche Bl&ouml;cke auszuzeichnen, 
+        n&auml;mlich den im zweiten Listenelement des Codeausschnitts gezeigten
+        &#8222;Piped Text&#8220;. Dieser l&auml;sst sich mit Zeilen mit Tags 
+        innerhalb des Blocks kombinieren. Dies ist mit der untergeordneten
+        <span class="code">ul</span> angedeutet.
+        
+      </p>
+      <p>
+        In diesem Projekt wurde f&uuml;r diese aber &uuml;berwiegend auf die Variante
+        Punkt und  <span class="code">#[...</span>]-Notation zur&uuml;ckgegriffen. Die 
+        Unterschiede zwischen beiden werden in 
+        <a href="https://pugjs.org/language/plain-text.html"> &#8618;der <span class="name">Pug</span>-Dokumentation zum Thema Plain Text</a> 
+        erl&auml;utert.
+        
+      </p>
+      <h4>Das Github-Repository</h4>
+      <p>
+        Das gesamte Projekt ist 
+        <a href="https://github.com/joknie/webprojekt-ae" target="_blank">&#8618;auf Github als Repository</a>
+        hochgeladen. Dort finden sich auch alle Dateien, die nicht Teil der Abgabe
+        des Projekts waren, also insbesondere die <span class="code">.pug</span>-Dateien.
+      </p>
     </main>
     <footer>
       <p class="invert">&copy; 2022 Johannes Knieling</p>

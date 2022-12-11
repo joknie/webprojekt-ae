@@ -10,7 +10,7 @@
       <h1 class="invert">Webprojekt</h1>
       <h2>Johannes Knieling, FIAE14</h2>
     </header>
-    <nav> <a href="Index.html">Übersicht</a><a href="PAP.html">Programmablaufplan</a><a class="active" href="Inhalt.html">Template Engine Pug</a><a href="Pug.html">Codebeispiel Pug</a>
+    <nav> <a href="Index.html">Übersicht</a><a href="PAP.html">Programmablaufplan</a><span class="active">Template Engine Pug</span><a href="Pug.html">Codebeispiele Pug</a>
     </nav>
     <main>
       <p><span class="bold">Hinweis:</span> Auf dieser Seite befinden sich mehrere Links, die 
@@ -134,6 +134,54 @@ p.caption.
         Beispielcharakter hat, da mehrere davon verwendet wurden.
         
       </p>
+      <h4>Vererbung</h4>
+      <p>Templates k&ouml;nnen in <span class="name">Pug</span> andere Templates erweitern 
+        und deren Inhalt erben. In einer vererbenden Template k&ouml;nnen 
+        Bl&ouml;cke definiert werden, die entweder mit einen Standardinhalt 
+        gef&uuml;llt oder in der Kindtemplate definiert und ersetzt werden 
+        k&ouml;nnen.
+        
+      </p>
+      <p>
+        Ein Verwendungszweck daf&uuml;r ist das Erstellen einer Template 
+        f&uuml;r das Seitenlayout, in die der eigentliche, von Seite zu Seite
+        variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
+        
+      </p>
+      <p>Diese Seite und das <a href="Pug.html">Codebeispiel</a> werden beide aus
+        einer gemeinsamen Template abgeleitet. Diese enth&auml;lt das 
+        HTML-Ger&uuml;st mit einem Platzhalter f&uuml;r den Inhalt. Die Dateien, aus 
+        denen die genannten Seiten generiert werden, erweitern diese lediglich.
+        
+      </p>
+      <pre>extends _templates/main.pug
+
+block content
+</pre>
+      <p class="caption">Codeausschnitt 2 - Die ersten Zeilen von Inhalt.pug</p>
+      <p>
+        In der ersten Zeile wird die Vererbung der Haupttemplate festgelegt. Die 
+        Anweisung <span class="code">block content</span> erzeugt einen Codeblock mit dem Namen
+        <span class="code">content</span>, der an der Stelle, wo er in der Haupttemplate erwartet 
+        wird, eingesetzt wird.
+        
+      </p>
+      <pre>main
+  block content
+    p You should never see this!  
+</pre>
+      <p class="caption">Codeausschnitt 3 - Der Teil von main.pug, an dem der Block
+        content eingef&uuml;gt wird
+        
+      </p>
+      <p>
+        In diesem Ausschnitt ist auch die M&ouml;glichkeit gezeigt, Defaultwerte
+        f&uuml;r Bl&ouml;cke anzugeben. Ist in einer Datei, die 
+        <span class="code">main.pug</span> erbt, kein Block mit dem Namen <span class="code">content</span> 
+        definiert, w&uuml;rde der Text &#8222;You should never see this!&#8220;
+        angezeigt.
+        
+      </p>
       <h4>Includes</h4>
       <p>
         Mit dem Befehl &#8222;include&#8220; kann in eine 
@@ -145,14 +193,19 @@ p.caption.
       </p>
       <p>
         Dies macht insbesondere f&uuml;r immer wiederkehrende Teile des 
-        Seitendesigns Sinn. So wurden auf dieser Seite der Kopfteil, die
-        Navigationsleiste und die Fu&szlig;zeile als <span class="code">include</span> 
-        realisiert.
+        Seitendesigns Sinn. So wurden der Kopfteil, die Navigationsleiste und die 
+        Fu&szlig;zeile als <span class="code">include</span> bereits in de Template
+        <span class="code">main.pug</span> realisiert.
         
       </p>
-      <pre>include _includes/Header.pug</pre>
-      <p class="caption">Codeausschnitt 2 - Einbinden von Kopfteil und 
-        Navigationsleiste in dieses Dokument
+      <pre>header
+  include ../_includes/Header.pug
+
+nav  
+  include ../_includes/Nav.pug
+</pre>
+      <p class="caption">Codeausschnitt 4 - Einbinden von Kopfteil und 
+        Navigationsleiste in der Template main.pug
         
       </p>
       <h4>Variablen, Iteration und Verzweigungen </h4>
@@ -211,7 +264,7 @@ table
         td=i++
         td.last-in-row=item
 </pre>
-      <p class="caption">Codeausschnitt 3 - Erzeugen einer Tabelle aus Daten </p>
+      <p class="caption">Codeausschnitt 5 - Erzeugen einer Tabelle aus Daten </p>
       <p>
         Statt einer statischen Definition der Tabelle werden in diesem Code aus
         dem Array <span class="code">list</span> (unter Zuhilfenahme einer 
@@ -259,7 +312,7 @@ table
   &lt;/tr&gt;
 &lt;/table&gt;
 </pre>
-      <p class="caption">Codeausschnitt 4 - Die Tabelle in HTML </p>
+      <p class="caption">Codeausschnitt 6 - Die Tabelle in HTML </p>
       <h4>Weitere Funktionen</h4>
       <p>Weitere Funktionen, die <span class="name">Pug</span> bereitstellt, die aber im 
         Rahmen dieses Projekts nicht eingesetzt wurden, sollen trotzdem kurz 
@@ -301,7 +354,7 @@ ul
 </pre>
         </div>
       </div>
-      <p class="caption">Codebeispiel 5 - Mixin zum Erzeugen einer Liste<br>
+      <p class="caption">Codebeispiel 7 - Mixin zum Erzeugen einer Liste<br>
         Quelle: 
         <a href="https://pugjs.org/language/mixins.html">&#8618;Pug Dokumentation: Mixins</a>
         
@@ -309,20 +362,6 @@ ul
       <p>Durch den zweifachen Aufruf von <span class="code">+list</span>; am Ende des 
         <span class="name">Pug</span>-Ausschnitts werden bei der Konversion zu HTML zwei 
         Listen erzeugt.
-        
-      </p>
-      <h5>Vererbung</h5>
-      <p>Templates k&ouml;nnen in <span class="name">Pug</span> andere Templates erweitern 
-        und deren Inhalt erben. In einer vererbenden Template k&ouml;nnen 
-        Bl&ouml;cke definiert werden, die entweder mit einen Standardinhalt 
-        gef&uuml;llt oder in der Kindtemplate definiert und ersetzt werden 
-        k&ouml;nnen.
-        
-      </p>
-      <p>
-        Ein Verwendungszweck daf&uuml;r ist das Erstellen einer Template 
-        f&uuml;r das Seitenlayout, in die der eigentliche, von Seite zu Seite
-        variable Inhalt als Block aus einer anderen Datei eingef&uuml;gt wird.
         
       </p>
       <h5>Filter</h5>
